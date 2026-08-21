@@ -154,7 +154,7 @@
     content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:var(--navy);
   }
 
-  /* ===== EXPERIENCE WITH HOVER REVEAL ===== */
+  /* ===== EXPERIENCE WITH CLEAN HOVER REVEAL ===== */
   .timeline{display:flex; flex-direction:column; gap:12px;}
   .tl-card{
     display:grid; grid-template-columns:68px 1fr auto; gap:24px; align-items:start;
@@ -166,18 +166,17 @@
     border-color:var(--navy);
     box-shadow:0 12px 28px -10px rgba(29,43,79,0.12);
     transform:translateY(-2px);
-    background:var(--white);
   }
   .tl-photo-box{
-    width:60px; height:60px; border-radius:12px; background:var(--white); color:var(--white);
+    width:60px; height:60px; border-radius:12px; background:var(--white); color:var(--navy);
     display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--border);
     flex-shrink:0; font-family:var(--display); font-weight:700; font-size:0.85rem; padding:4px;
   }
   .tl-photo-box img{width:100%; height:100%; object-fit:contain; border-radius:8px;}
   .tl-body h3{font-size:1.15rem; margin-bottom:2px;}
-  .tl-role{color:var(--navy); font-weight:600; font-size:0.92rem; margin-bottom:4px;}
+  .tl-role{color:var(--navy); font-weight:600; font-size:0.92rem; margin-bottom:2px;}
   
-  /* Smooth Hover Dropdown for Bullets */
+  /* Smooth Hover Dropdown */
   .tl-bullets-wrapper{
     display:grid;
     grid-template-rows:0fr;
@@ -200,11 +199,6 @@
   .tl-bullets-inner ul li::before{
     content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:var(--steel);
   }
-  .tl-hint{
-    font-family:var(--mono); font-size:0.68rem; color:var(--grey-text); opacity:0.75;
-    transition:opacity 0.2s; margin-top:2px; display:inline-block;
-  }
-  .tl-card:hover .tl-hint{opacity:0; height:0; overflow:hidden; margin:0;}
 
   .tl-date{
     font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--grey-text); white-space:nowrap; padding-top:4px;
@@ -373,7 +367,8 @@
           <img src="images/lin lin.jpg" alt="Creative & String Instruments" onerror="this.onerror=null; this.src='images/lin lin.png';">
         </div>
         <div class="about-photo-bottom">
-          <img src="images/Radience.jpg" alt="Life & Discipline" onerror="this.onerror=null; this.src='images/Radience.png';">
+          <!-- Radience with comprehensive fallback -->
+          <img src="images/Radience.jpg" alt="Life & Discipline" onerror="this.onerror=null; this.src='images/Radience.png'; this.onerror=function(){this.src='images/Radience.jpeg';};">
         </div>
       </div>
     </div>
@@ -434,7 +429,7 @@
     <div class="section-head">
       <span class="eyebrow">Leadership & Experience</span>
       <h2 style="margin-top:14px;">Where I've put engineering and leadership to work.</h2>
-      <p>Hover over any role to explore project contributions, technical scope, and key deliverables.</p>
+      <p>Hover over any role to explore.</p>
     </div>
     <div class="timeline">
       
@@ -446,7 +441,6 @@
         <div class="tl-body">
           <h3>Exxaro Resources</h3>
           <div class="tl-role">Engineering Vacation Student</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
@@ -467,7 +461,6 @@
         <div class="tl-body">
           <h3>BioHydra Technologies</h3>
           <div class="tl-role">Systems Integration Lead</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
@@ -488,7 +481,6 @@
         <div class="tl-body">
           <h3>UCT Formula Student (FSA Racing)</h3>
           <div class="tl-role">Electrical Team Lead</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
@@ -504,17 +496,16 @@
       <!-- 4. Tugwell Hall -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/tugwell logo.jpg" alt="Tugwell Hall Residence" onerror="this.onerror=null; this.src='images/tugwell logo.png'; this.onerror=function(){this.parentElement.innerText='TH';}">
+          <img src="images/tugwell logo.jpg" alt="Tugwell Hall Residence" onerror="this.onerror=null; this.src='images/tugwell%20logo.jpg'; this.onerror=function(){this.src='images/tugwell logo.png'; this.onerror=function(){this.src='images/tugwell%20logo.png'; this.onerror=function(){this.parentElement.innerText='TH';};};};">
         </div>
         <div class="tl-body">
           <h3>Tugwell Hall Residence, UCT</h3>
           <div class="tl-role">Admin & Reception Subwarden · Residence Mentor · Front Desk Assistant</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
                 <li>Managed front-of-house operations, crisis response protocols, and logistics for a 400+ student residence.</li>
-                <li>Provided academic orientation and mentorship to first-year engineering and science students.</li>
+                <li>Provided mentorship and orientation to first year Tugwell Hall Residence students.</li>
               </ul>
             </div>
           </div>
@@ -525,12 +516,11 @@
       <!-- 5. UCT EBE -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/UCT EBE.jpg" alt="UCT Department of Electrical Engineering" onerror="this.onerror=null; this.src='images/UCT EBE.png'; this.onerror=function(){this.parentElement.innerText='EBE';}">
+          <img src="images/UCT EBE.jpg" alt="UCT Department of Electrical Engineering" onerror="this.onerror=null; this.src='images/UCT%20EBE.jpg'; this.onerror=function(){this.src='images/UCT EBE.png'; this.onerror=function(){this.parentElement.innerText='EBE';};};">
         </div>
         <div class="tl-body">
           <h3>UCT Department of Electrical Engineering</h3>
           <div class="tl-role">Academic Tutor</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
@@ -551,7 +541,6 @@
         <div class="tl-body">
           <h3>University Governance & Leadership</h3>
           <div class="tl-role">Treasurer (UCT Gymnastics Club & GBC)</div>
-          <span class="tl-hint">Hover to view deliverables ▾</span>
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
@@ -707,7 +696,7 @@
           <div class="placeholder-graphic">❄️ STM32 Telemetry &<br>Thermistor String Array</div>
         </div>
         <div class="project-artefacts">
-          <a href="https://github.com/nyakallopeete" target="_blank" rel="noopener" class="artefact-btn">💻 GitHub Repository ↗</a>
+          <a href="https://github.com/nyalcina" target="_blank" rel="noopener" class="artefact-btn">💻 GitHub Repository ↗</a>
         </div>
       </div>
       <div class="project-info">
@@ -749,7 +738,7 @@
           <div class="placeholder-graphic">⚙️ 16-Bit Pipelined CORDIC<br>Verilog Architecture</div>
         </div>
         <div class="project-artefacts">
-          <a href="https://github.com/nyakallopeete" target="_blank" rel="noopener" class="artefact-btn">💻 GitHub Repository ↗</a>
+          <a href="https://github.com/nyalcina" target="_blank" rel="noopener" class="artefact-btn">💻 GitHub Repository ↗</a>
         </div>
       </div>
       <div class="project-info">
@@ -796,9 +785,9 @@
       </div>
       <div style="display:flex; gap:56px; flex-wrap:wrap;">
         <div class="contact-links">
-          <a href="mailto:nyakipeete@gmail.com">Email ↗</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://github.com/nyakallopeete" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="mailto:Nyakipeete@gmail.com">Email ↗</a>
+          <a href="https://www.linkedin.com/in/nyakallo-peete-b27a7a237/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/nyalcina" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
         <div class="footer-quicklinks">
           <span class="eyebrow">Quick Links</span>
