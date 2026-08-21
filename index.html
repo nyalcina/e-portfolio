@@ -233,7 +233,6 @@
     border-right:1px solid var(--border);
   }
   
-  /* Centered, Clickable Zoom Containers */
   .project-visual-preview{
     width:100%; height:220px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.15);
     background:rgba(255,255,255,0.04); display:flex; align-items:center; justify-content:center; padding:10px;
@@ -503,9 +502,9 @@
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
-                <li><strong>Grootegeluk Projects (2025):</strong> Modeled Scope 2 emissions reduction and high-level control states for automated open-cast pit dewatering.</li>
-                <li><strong>Belfast Instrumentation (2024):</strong> Co-designed automated water bowser filling station controls and assisted in plant-wide sensor fault-finding.</li>
-                <li><strong>Leeupan Engineering (2023):</strong> Mapped pneumatic airflow systems across 4 coal washing plants to standardize operating procedures.</li>
+                <li>Grootegeluk Projects 2025: Modeled Scope 2 emissions reduction and high-level control states for automated open-cast pit dewatering.</li>
+                <li>Belfast Instrumentation 2024: Co-designed automated water bowser filling station controls and assisted in plant-wide sensor fault-finding.</li>
+                <li>Leeupan Engineering 2023: Mapped pneumatic airflow systems across 4 coal washing plants to standardize operating procedures.</li>
               </ul>
             </div>
           </div>
@@ -525,7 +524,7 @@
             <div class="tl-bullets-inner">
               <ul>
                 <li>Lead cross-subsystem integration across mechanical actuation, power electronics, and embedded logic for atmospheric water generators.</li>
-                <li>Standardize communication interfaces, design maintenance routines, and direct hardware-in-the-loop (HIL) testing during commissioning.</li>
+                <li>Standardize communication interfaces, design maintenance routines, and direct hardware-in-the-loop testing during commissioning.</li>
               </ul>
             </div>
           </div>
@@ -638,7 +637,7 @@
           <span class="eyebrow">Power Electronics & Energy Storage</span>
           <span class="status-pill">Final Year Project · In Progress</span>
         </div>
-        <h3>Dynamic Modelling & Control of a Vanadium Redox Flow Battery Interfaced via Bidirectional DC-DC Converter</h3>
+        <h3>Vanadium Redox Flow Battery & Bidirectional DC-DC Interface</h3>
         <div class="stack-pills">
           <span class="pill">MATLAB / Simulink</span>
           <span class="pill">Simscape Battery</span>
@@ -649,7 +648,7 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>Grid-scale renewable storage demands long-duration solutions, but flow battery terminal voltage varies non-linearly with electrolyte flow rates, stack chemistry, and pump losses.</p>
+            <p>Grid-scale renewable storage requires durable solutions. However, flow battery terminal voltage varies non-linearly with electrolyte flow rates, stack chemistry, and pump losses.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
@@ -657,7 +656,7 @@
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Extended dynamic electrochemical stack models with bidirectional converter topologies; implementing multi-loop current, power, and voltage regulation schemes across active charge and discharge cycles.</p>
+            <p>Built equivalent-circuit models in MATLAB/Simulink. I designed multi-loop current, power, and voltage regulation schemes across active charge and discharge cycles.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
@@ -699,11 +698,11 @@
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Specified four 280 kW / 600 V WEG CFW11 VSDs; designed an APC state machine with automated fault detection (cavitation, pipe burst); modeled savings using Hydraulic Affinity Law 3.</p>
+            <p>Specified four 280 kW WEG CFW11 VSDs. I designed an APC state machine with automated fault detection for cavitation and pipe bursts, while modeling savings using Hydraulic Affinity Law 3.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Demonstrated 4.32 GWh annual energy savings across 4 pumps, yielding R5.21M annual OPEX savings, a R1.11M SARS Section 12L tax rebate, and 100% payback in Year 1.</p>
+            <p>Demonstrated 4.32 GWh annual energy savings across four pumps, yielding R5.21M annual OPEX savings, a R1.11M tax rebate, and 100% payback in Year 1.</p>
           </div>
         </div>
       </div>
@@ -733,7 +732,7 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>An autonomous maze-solving Micromouse robot required an isolated, compact power PCB to drive 4 motors bidirectionally and monitor battery health under a strict $70 budget.</p>
+            <p>An autonomous maze-solving Micromouse robot required an isolated, compact power PCB to drive four motors bidirectionally and monitor battery health under a strict $70 budget.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
@@ -741,11 +740,11 @@
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Integrated dual TPS63020 buck-boost regulators for 5 V and 3.3 V rails, two DRV8833 dual H-bridges (1.5 A/channel), TPS22917 high-side switches, and an INA219 current monitor over I2C.</p>
+            <p>Integrated dual TPS63020 buck-boost regulators for 5 V and 3.3 V rails, two DRV8833 dual H-bridges, TPS22917 high-side switches, and an INA219 current monitor over I2C.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Passed all acceptance tests (ATP01-05), verifying 5.098 V rail stability, clean bidirectional motor control, and delivered the board under budget at $25.79.</p>
+            <p>Passed all acceptance tests, verifying 5.098 V rail stability, clean bidirectional motor control, and delivered the board under budget at $25.79.</p>
           </div>
         </div>
       </div>
@@ -780,15 +779,15 @@
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Develop the Data Processing & Integrity firmware on an STM32 microcontroller to acquire multi-depth temperatures, calculate conductive heat flux, and ensure autonomous recovery.</p>
+            <p>Develop the firmware on an STM32 microcontroller to acquire multi-depth temperatures, calculate conductive heat flux, and ensure autonomous system recovery.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Sampled a 6-node DS18B20 1-Wire string by unique 64-bit ROM; calculated Fourier heat flux; implemented moving-average filtering, NAN fault-masking, and RCC_CSR register polling for IWDG/BOR hardware reset auditing.</p>
+            <p>Sampled a 6-node DS18B20 1-Wire string; calculated Fourier heat flux; implemented moving-average filtering, NAN fault-masking, and register polling for IWDG/BOR hardware reset auditing.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Achieved post-calibration temperature accuracy within +/-0.1 deg C, validated 13-field CSV packet streaming to telemetry, and confirmed low-power duty cycling (26.6 mA active, 7.82 mA sleep).</p>
+            <p>Achieved post-calibration temperature accuracy within +/-0.1 deg C, validated CSV packet streaming to telemetry, and confirmed low-power duty cycling.</p>
           </div>
         </div>
       </div>
@@ -818,19 +817,19 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>The 16-bit single-cycle StarCore-1 RISC CPU lacked native trigonometric hardware, requiring slow, multi-cycle software approximations (>100 cycles) for robotic coordinate transforms.</p>
+            <p>The 16-bit StarCore-1 RISC CPU lacked native trigonometric hardware, requiring slow software approximations for robotic coordinate transforms.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Design, synthesize, and verify a tightly coupled 16-iteration CORDIC co-processor in Verilog HDL to accelerate sine and cosine calculations in hardware.</p>
+            <p>Design, synthesize, and verify a 16-iteration CORDIC co-processor in Verilog HDL to accelerate sine and cosine calculations in hardware.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Implemented a 4-state FSM using shift-and-add arithmetic and an integer arctangent LUT; extended the CPU Control Unit with custom opcodes, pipeline stall logic, and a 3-way write-back multiplexer; verified against a Python golden model.</p>
+            <p>Implemented a 4-state FSM using shift-and-add arithmetic and an arctangent LUT; extended the CPU Control Unit with custom opcodes, pipeline stall logic, and a write-back multiplexer.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Computed trigonometric outputs in 19 clock cycles (190 ns @ 100 MHz) with error under 2^-13 across [-pi/2, pi/2], requiring only ~150 LUTs for FPGA implementation.</p>
+            <p>Computed trigonometric outputs in 19 clock cycles (190 ns) with error under 2^-13 across the [-pi/2, pi/2] range, requiring only ~150 LUTs for FPGA implementation.</p>
           </div>
         </div>
       </div>
@@ -860,19 +859,19 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>Speed and position control of a DC servo motor is hindered by static dead-bands (+/-1.7 V), DAC saturation (+/-10 V), and varying inertial loads across 4 configurations (LD, LB, HB, HD).</p>
+            <p>Speed and position control of a DC servo motor is hindered by static dead-bands (+/-1.7 V), DAC saturation, and varying inertial loads across 4 different configurations.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Perform empirical system identification and synthesize a robust digital cascade controller meeting strict time and frequency-domain bounds (settling time < 1.0 s, overshoot < 20%).</p>
+            <p>Perform system identification and synthesize a robust digital cascade controller meeting strict time and frequency-domain settling time and overshoot bounds.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Derived plant transfer functions using least-squares regression; performed QFT loop shaping on an inner speed controller (Gi = 3.5) and outer position compensator (Go); tuned hardware parameters to eliminate bang-bang actuator saturation.</p>
+            <p>Derived plant transfer functions using least-squares regression; performed loop shaping on an inner speed controller and outer position compensator; tuned hardware parameters to eliminate actuator saturation.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Verified robust setpoint tracking and disturbance rejection (<= -20 dB at 0.5 rad/s) across all plant configurations in Simulink and physical laboratory testing.</p>
+            <p>Verified robust setpoint tracking and disturbance rejection across all plant configurations in both Simulink and physical laboratory testing.</p>
           </div>
         </div>
       </div>
