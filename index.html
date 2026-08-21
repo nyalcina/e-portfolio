@@ -1,4 +1,578 @@
-<!-- 5. UCT EBE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyakallo Peete — Mechatronics & Control Systems Engineer</title>
+<meta name="description" content="Nyakallo Peete — Mechatronics & Control Systems Engineer. Portfolio of embedded systems, power electronics, and control architecture work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF9;
+    --bg-cool:#F8FAFC;
+    --ink:#0E0F12;
+    --ink-soft:#3A3F47;
+    --navy:#1D2B4F;
+    --navy-deep:#111E3D;
+    --steel:#3B82F6;
+    --border:#E2E8F0;
+    --white:#FFFFFF;
+    --grey-text:#6B7280;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:100px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+  h1,h2,h3,h4{font-family:var(--display); font-weight:600; letter-spacing:-0.01em; color:var(--ink);}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--navy); display:inline-block; font-weight:600;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:var(--radius-sm); font-size:0.88rem; font-weight:500;
+    border:1px solid var(--ink); transition:all 0.2s ease; cursor:pointer;
+  }
+  .btn.primary{background:var(--ink); color:var(--white);}
+  .btn.primary:hover{background:var(--navy); border-color:var(--navy); transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--border);}
+  .btn.ghost:hover{border-color:var(--navy); color:var(--navy); transform:translateY(-1px);}
+  .btn.sm{padding:9px 18px; font-size:0.8rem;}
+  .pill{
+    font-family:var(--mono); font-size:0.72rem; color:var(--navy); font-weight:500;
+    border:1px solid var(--border); background:var(--white);
+    padding:5px 12px; border-radius:var(--radius-sm); display:inline-block;
+  }
+  .status-pill{
+    font-family:var(--mono); font-size:0.7rem; color:#D97706; background:#FEF3C7;
+    border:1px solid #FDE68A; padding:4px 10px; border-radius:20px; font-weight:600;
+  }
+  section{padding:100px 0;}
+  .section-head{max-width:680px; margin-bottom:48px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); line-height:1.15;}
+  .section-head p{color:var(--grey-text); margin-top:14px; font-size:1.02rem;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(250,250,249,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 32px;}
+  .logo{font-family:var(--display); font-weight:700; font-size:1.2rem;}
+  .logo span{color:var(--navy);}
+  .navlinks{display:flex; align-items:center; gap:28px;}
+  .navlinks a:not(.btn){
+    font-size:0.88rem; font-weight:500; color:var(--ink-soft); position:relative; padding:4px 0; transition:color 0.2s ease;
+  }
+  .navlinks a:not(.btn)::after{
+    content:''; position:absolute; left:0; bottom:-2px; height:2px; width:0;
+    background:var(--navy); transition:width 0.25s ease;
+  }
+  .navlinks a:not(.btn):hover::after, .navlinks a.active::after{width:100%;}
+  .navlinks a.active{color:var(--navy);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; font-size:1.4rem;}
+
+  /* ===== HERO ===== */
+  #home{padding-top:80px; padding-bottom:80px;}
+  .hero-grid{display:grid; grid-template-columns:0.88fr 1.12fr; gap:56px; align-items:center;}
+  .hero-portrait{
+    position:relative; border-radius:var(--radius-lg); overflow:hidden;
+    aspect-ratio:3/4; background:linear-gradient(160deg,#1D2B4F,#0E0F12);
+    border:1px solid rgba(59,130,246,0.25);
+    box-shadow:0 20px 50px -20px rgba(17,30,61,0.35);
+  }
+  .hero-portrait img{width:100%; height:100%; object-fit:cover; object-position:top center;}
+  .hero-copy .eyebrow{margin-bottom:14px;}
+  .hero-copy h1{font-size:clamp(2.2rem, 4.2vw, 3.2rem); line-height:1.08; margin-bottom:8px;}
+  .hero-copy .degree{
+    font-family:var(--mono); font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:14px; display:block;
+  }
+  .hero-copy .lede{font-size:1.05rem; color:var(--ink-soft); max-width:560px; margin-bottom:20px;}
+  
+  .honours-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .honour-tag{
+    font-family:var(--mono); font-size:0.7rem; font-weight:600; color:#1E3A8A;
+    background:#EFF6FF; border:1px solid #DBEAFE; padding:4px 10px; border-radius:6px;
+  }
+
+  .hero-pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* ===== ABOUT ===== */
+  #about{background:var(--bg-cool); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .about-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:52px; align-items:center; margin-bottom:80px;}
+  .about-grid p{color:var(--ink-soft); margin-bottom:16px; font-size:1.01rem;}
+  .about-grid p:last-child{margin-bottom:0;}
+  
+  .about-photos-stacked{position:relative; width:100%; max-width:400px; margin:0 auto;}
+  .about-photo-top{
+    position:relative; width:78%; aspect-ratio:4/3; border-radius:var(--radius-md);
+    background:var(--white); border:1px solid var(--border); overflow:hidden;
+    box-shadow:0 10px 25px -10px rgba(17,30,61,0.15); z-index:1;
+  }
+  .about-photo-bottom{
+    position:relative; width:78%; aspect-ratio:4/3; margin-top:-65px; margin-left:22%;
+    border-radius:var(--radius-md); background:var(--white); border:4px solid var(--white);
+    overflow:hidden; box-shadow:0 18px 36px -12px rgba(17,30,61,0.22); z-index:2;
+  }
+  .about-photos-stacked img{width:100%; height:100%; object-fit:cover;}
+
+  .aspirations-intro{max-width:760px; margin-bottom:36px;}
+  .aspirations-intro p{color:var(--ink-soft); font-size:1.04rem;}
+  
+  /* Aspirations Cards */
+  .aspiration-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .aspiration-card{
+    background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md);
+    overflow:hidden; transition:transform 0.25s ease, box-shadow 0.25s ease; display:flex; flex-direction:column;
+  }
+  .aspiration-card:hover{transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(17,30,61,0.2);}
+  .aspiration-card .img{
+    width:100%; aspect-ratio:3/4; min-height:380px; background:var(--bg-cool); overflow:hidden; border-bottom:1px solid var(--border);
+  }
+  .aspiration-card .img img{
+    width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform 0.3s ease;
+  }
+  .aspiration-card:hover .img img{transform:scale(1.03);}
+  .aspiration-card .body{padding:24px; flex:1;}
+  .aspiration-card h4{font-size:1.08rem; margin-bottom:12px;}
+  .aspiration-card ul li{
+    font-size:0.9rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:8px; line-height:1.5;
+  }
+  .aspiration-card ul li::before{
+    content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:var(--navy);
+  }
+
+  /* ===== EXPERIENCE WITH CLEAN HOVER REVEAL ===== */
+  .timeline{display:flex; flex-direction:column; gap:12px;}
+  .tl-card{
+    display:grid; grid-template-columns:68px 1fr auto; gap:24px; align-items:start;
+    padding:20px 24px; border:1px solid var(--border); background:var(--white);
+    border-radius:var(--radius-md); transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor:pointer;
+  }
+  .tl-card:hover{
+    border-color:var(--navy);
+    box-shadow:0 12px 28px -10px rgba(29,43,79,0.12);
+    transform:translateY(-2px);
+  }
+  .tl-photo-box{
+    width:60px; height:60px; border-radius:12px; background:var(--white); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--border);
+    flex-shrink:0; font-family:var(--display); font-weight:700; font-size:0.85rem; padding:4px;
+  }
+  .tl-photo-box img{width:100%; height:100%; object-fit:contain; border-radius:8px;}
+  .tl-body h3{font-size:1.15rem; margin-bottom:2px;}
+  .tl-role{color:var(--navy); font-weight:600; font-size:0.92rem; margin-bottom:2px;}
+  
+  .tl-bullets-wrapper{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tl-bullets-inner{
+    overflow:hidden;
+  }
+  .tl-card:hover .tl-bullets-wrapper{
+    grid-template-rows:1fr;
+  }
+  .tl-bullets-inner ul{
+    padding-top:12px;
+    margin-top:8px;
+    border-top:1px dashed var(--border);
+  }
+  .tl-bullets-inner ul li{
+    font-size:0.92rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:6px; max-width:720px; line-height:1.55;
+  }
+  .tl-bullets-inner ul li::before{
+    content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:var(--steel);
+  }
+
+  .tl-date{
+    font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--grey-text); white-space:nowrap; padding-top:4px;
+    background:var(--bg-cool); padding:6px 12px; border-radius:20px; border:1px solid var(--border);
+  }
+  @media (max-width:700px){
+    .tl-card{grid-template-columns:52px 1fr; padding:16px;}
+    .tl-date{grid-column:2; padding-top:2px; order:3; width:fit-content; margin-top:6px;}
+    .tl-photo-box{width:48px; height:48px; font-size:0.78rem;}
+  }
+
+  /* ===== PROJECTS ===== */
+  #projects{background:var(--bg-cool); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .project-card{
+    display:grid; grid-template-columns:0.95fr 1.05fr; gap:0;
+    background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg);
+    overflow:hidden; margin-bottom:32px; box-shadow:0 4px 18px rgba(0,0,0,0.02);
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .project-card:hover{border-color:#CBD5E1; box-shadow:0 12px 30px rgba(17,30,61,0.06);}
+  .project-card:last-child{margin-bottom:0;}
+  .project-visual{
+    background:linear-gradient(160deg,#111E3D,#1D2B4F); position:relative; min-height:300px;
+    display:flex; flex-direction:column; justify-content:space-between; padding:22px;
+    border-right:1px solid var(--border);
+  }
+  
+  .project-visual-preview{
+    width:100%; height:220px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.04); display:flex; align-items:center; justify-content:center; padding:10px;
+    cursor:zoom-in; position:relative;
+  }
+  .project-visual-preview.compact{
+    height:145px;
+  }
+  .project-visual-preview::after{
+    content:'Click to expand'; position:absolute; bottom:8px; right:8px;
+    background:rgba(14,15,18,0.75); backdrop-filter:blur(4px); color:#FFF; font-family:var(--mono);
+    font-size:0.65rem; padding:3px 8px; border-radius:6px; opacity:0; transition:opacity 0.2s ease;
+    pointer-events:none;
+  }
+  .project-visual-preview:hover::after{
+    opacity:1;
+  }
+  .project-visual-preview img{
+    max-width:100%; max-height:100%; object-fit:contain; object-position:center;
+    transition:transform 0.3s ease;
+  }
+  .project-visual-preview:hover img{
+    transform:scale(1.03);
+  }
+  
+  .project-artefacts{display:flex; flex-direction:column; gap:8px; margin-top:16px;}
+  .artefact-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px; background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18); color:var(--white);
+    padding:10px 14px; border-radius:8px; font-size:0.82rem; font-weight:600;
+    transition:all 0.2s ease; text-decoration:none; text-align:center;
+  }
+  .artefact-btn:hover{background:rgba(255,255,255,0.18); transform:translateY(-1px);}
+  .project-info{padding:32px;}
+  .project-header-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;}
+  .project-info h3{font-size:1.24rem; margin-bottom:12px; line-height:1.3;}
+  .stack-pills{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;}
+  .star{display:flex; flex-direction:column; gap:10px;}
+  .star-row{display:grid; grid-template-columns:85px 1fr; gap:12px;}
+  .star-label{
+    font-family:var(--mono); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:var(--navy);
+    text-transform:uppercase; padding-top:2px;
+  }
+  .star-row p{font-size:0.88rem; color:var(--ink-soft); line-height:1.55;}
+  @media (max-width:850px){
+    .project-card{grid-template-columns:1fr;}
+    .project-visual{border-right:none; border-bottom:1px solid var(--border);}
+    .star-row{grid-template-columns:1fr; gap:2px;}
+  }
+
+  /* ===== IMAGE LIGHTBOX MODAL ===== */
+  .lightbox-modal{
+    position:fixed; top:0; left:0; width:100vw; height:100vh;
+    background:rgba(10,14,24,0.92); backdrop-filter:blur(10px);
+    z-index:9999; display:none; align-items:center; justify-content:center;
+    padding:30px; opacity:0; transition:opacity 0.25s ease;
+  }
+  .lightbox-modal.open{
+    display:flex; opacity:1;
+  }
+  .lightbox-container{
+    position:relative; max-width:92vw; max-height:90vh; display:flex;
+    flex-direction:column; align-items:center;
+  }
+  .lightbox-container img{
+    max-width:100%; max-height:85vh; object-fit:contain; border-radius:8px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.15);
+  }
+  .lightbox-caption{
+    color:#E2E8F0; font-family:var(--mono); font-size:0.85rem; margin-top:14px; text-align:center;
+  }
+  .lightbox-close{
+    position:absolute; top:-40px; right:0; background:none; border:none; color:#FFF;
+    font-size:2rem; cursor:pointer; line-height:1; opacity:0.8; transition:opacity 0.2s;
+  }
+  .lightbox-close:hover{opacity:1; color:var(--steel);}
+
+  /* ===== CONTACT / FOOTER ===== */
+  #contact{padding-bottom:0;}
+  .contact-inner{
+    background:var(--navy-deep); border-radius:var(--radius-lg); padding:60px 52px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; color:var(--white);
+  }
+  .contact-inner h2{color:var(--white); font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:14px;}
+  .contact-inner p{color:#B9C1D4; max-width:420px; margin-bottom:26px;}
+  .contact-links{display:flex; flex-direction:column; gap:14px;}
+  .contact-links a{
+    font-family:var(--display); font-size:1.15rem; color:var(--white);
+    border-bottom:1px solid transparent; width:fit-content; transition:all 0.2s;
+  }
+  .contact-links a:hover{color:var(--steel); border-color:var(--steel); transform:translateX(2px);}
+  .contact-inner .btn.primary{background:var(--white); color:var(--navy-deep); border-color:var(--white);}
+  .contact-inner .btn.primary:hover{background:var(--steel); color:var(--white); border-color:var(--steel);}
+  .footer-quicklinks{display:flex; flex-direction:column; gap:8px; align-self:start;}
+  .footer-quicklinks .eyebrow{color:#8592AC; margin-bottom:6px;}
+  .footer-quicklinks a{font-size:0.88rem; color:#D6DBE7; transition:color 0.2s;}
+  .footer-quicklinks a:hover{color:var(--steel);}
+  footer.sitefoot{
+    margin-top:40px; padding:24px 0 50px; display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:12px;
+    font-family:var(--mono); font-size:0.76rem; color:var(--grey-text);
+  }
+
+  @media (max-width:900px){
+    .hero-grid, .about-grid{grid-template-columns:1fr; gap:40px;}
+    .hero-portrait{max-width:340px;}
+    .aspiration-grid{grid-template-columns:1fr;}
+    .aspiration-card .img{min-height:300px;}
+    .contact-inner{grid-template-columns:1fr; padding:40px 24px;}
+  }
+  @media (max-width:700px){
+    .navlinks{
+      position:fixed; top:60px; left:0; right:0; background:var(--bg);
+      flex-direction:column; align-items:flex-start; padding:24px 32px; gap:18px;
+      border-bottom:1px solid var(--border); transform:translateY(-150%); transition:transform 0.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,0.06);
+    }
+    .navlinks.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+    section{padding:70px 0;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="logo">NP<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary sm">Resume ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <section id="home">
+    <div class="hero-grid">
+      <div class="hero-portrait">
+        <!-- Hero: Home -->
+        <img src="images/Home.jpg" alt="Nyakallo Peete" onerror="this.onerror=null; this.src='images/Home.png'; this.onerror=function(){this.src='reports/Home.jpg';};">
+      </div>
+      <div class="hero-copy">
+        <span class="eyebrow">Mechatronics & Control Systems Engineer</span>
+        <h1>Nyakallo Peete</h1>
+        <span class="degree">BSc.Eng Mechatronics (Final Year), University of Cape Town</span>
+        <p class="lede">I design and integrate dynamic control architectures, embedded firmware, and intelligent hardware, turning systems-level requirements into solutions that hold up outside the lab.</p>
+        
+        <div class="honours-row">
+          <span class="honour-tag">★ Dean's Merit List</span>
+          <span class="honour-tag">★ Golden Key Honour Society</span>
+          <span class="honour-tag">★ Class Medal: Physics (PHY1014F & PHY1015F)</span>
+        </div>
+
+        <div class="hero-pills">
+          <span class="pill">Control Systems</span>
+          <span class="pill">Embedded Firmware</span>
+          <span class="pill">Power Electronics</span>
+          <span class="pill">MATLAB & Simulink</span>
+          <span class="pill">Verilog HDL</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn primary">Explore Projects ↓</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn ghost">View Resume ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2 style="margin:14px 0 24px;">Curiosity, discipline, and creativity inside and outside the lab.</h2>
+        <p>Engineering to me is more than equations and schematics. It is about understanding how complex physical systems interact and designing solutions that work reliably in the real world.</p>
+        <p>Beyond technical coursework and system design, I bring that same curiosity and discipline into my creative and everyday life. Whether I am deconstructing basslines, practicing string instruments, or engaging in mindful physical training, I value continuous learning, precision, and finding harmony between analytical structure and creative expression.</p>
+        <p>When I am not debugging firmware or working on control algorithms, you will usually find me experimenting with new recipes, listening to soulful grooves, or recharging outdoors.</p>
+      </div>
+      
+      <div class="about-photos-stacked">
+        <div class="about-photo-top">
+          <img src="images/lin lin.jpg" alt="Creative & String Instruments" onerror="this.onerror=null; this.src='images/lin lin.png'; this.onerror=function(){this.src='reports/lin lin.jpg';};">
+        </div>
+        <div class="about-photo-bottom">
+          <img src="images/Radience.jpg" alt="Life & Discipline" onerror="this.onerror=null; this.src='images/Radience.png'; this.onerror=function(){this.src='reports/Radience.jpg';};">
+        </div>
+      </div>
+    </div>
+
+    <div class="aspirations-intro">
+      <span class="eyebrow">Aspirations & Future Milestones</span>
+      <p style="margin-top:14px;">There is more than meets the eye. Beyond engineering, I refuse to box myself in. I am eager to experience many facets of life because dreams and aspirations provide perspective, motivation, and hope. We all have different parts of ourselves that need to be nurtured and invested in. Below are a few non-engineering related goals I hope to achieve.</p>
+    </div>
+
+    <div class="aspiration-grid">
+      <!-- Card 1: BAB -->
+      <div class="aspiration-card">
+        <div class="img">
+          <img src="images/BAB.jpg" alt="Creative & Performing Arts" onerror="this.onerror=null; this.src='images/BAB.png'; this.onerror=function(){this.src='reports/BAB.jpg';};">
+        </div>
+        <div class="body">
+          <h4>Creative & Performing Arts</h4>
+          <ul>
+            <li>Dance with The Rockettes</li>
+            <li>Sing with the Brooklyn Tabernacle Choir & Joyous Celebration</li>
+            <li>Direct and produce an original screenplay</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 2: third -->
+      <div class="aspiration-card">
+        <div class="img">
+          <img src="images/third.jpg" alt="Impact & Community" onerror="this.onerror=null; this.src='images/third.png'; this.onerror=function(){this.src='reports/third.jpg';};">
+        </div>
+        <div class="body">
+          <h4>Impact, Enterprise & Community</h4>
+          <ul>
+            <li>Establish a foundation dedicated to uplifting and mentoring youth</li>
+            <li>Build a production company creating inspiring children's media</li>
+            <li>Ski across the Swiss Alps</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 3: Padel -->
+      <div class="aspiration-card">
+        <div class="img">
+          <img src="images/Padel.jpg" alt="Health & Discipline" onerror="this.onerror=null; this.src='images/padel.jpg'; this.onerror=function(){this.src='reports/Padel.jpg';};">
+        </div>
+        <div class="body">
+          <h4>Health, Discipline & Life Milestones</h4>
+          <ul>
+            <li>Master 10 clean pull-ups and strict push-ups</li>
+            <li>Build a warm, healthy, and loving home as a devoted homemaker</li>
+            <li>Continuously cultivate a life rooted in learning, health, and community</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE (HOVER REVEAL) ================= -->
+  <section id="experience">
+    <div class="section-head">
+      <span class="eyebrow">Leadership & Experience</span>
+      <h2 style="margin-top:14px;">Where I've put engineering and leadership to work.</h2>
+      <p>Hover over any role to explore.</p>
+    </div>
+    <div class="timeline">
+      
+      <!-- 1. Exxaro -->
+      <div class="tl-card">
+        <div class="tl-photo-box">
+          <img src="images/Exxaro.jpg" alt="Exxaro Resources" onerror="this.onerror=null; this.src='images/Exxaro.png'; this.onerror=function(){this.parentElement.innerText='EXX';};">
+        </div>
+        <div class="tl-body">
+          <h3>Exxaro Resources</h3>
+          <div class="tl-role">Engineering Vacation Student (Leeupan, Belfast & Grootegeluk)</div>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Grootegeluk Projects 2025: Modeled Scope 2 emissions reduction and high-level control states for automated open-cast pit dewatering.</li>
+                <li>Belfast Instrumentation 2024: Co-designed automated water bowser filling station controls and assisted in plant-wide sensor fault-finding.</li>
+                <li>Leeupan Engineering 2023: Mapped pneumatic airflow systems across 4 coal washing plants to standardize operating procedures.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tl-date">Dec 2023, 2024 & 2025</div>
+      </div>
+
+      <!-- 2. BioHydra Technologies -->
+      <div class="tl-card">
+        <div class="tl-photo-box">
+          <img src="images/BioHydra Technologies.jpg" alt="BioHydra Technologies" onerror="this.onerror=null; this.src='images/BioHydra Technologies.png'; this.onerror=function(){this.parentElement.innerText='BH';};">
+        </div>
+        <div class="tl-body">
+          <h3>BioHydra Technologies</h3>
+          <div class="tl-role">Co-Founder & Systems Integration Lead</div>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Lead cross-subsystem integration across mechanical actuation, power electronics, and embedded logic for atmospheric water generators.</li>
+                <li>Standardize communication interfaces, design maintenance routines, and direct hardware-in-the-loop testing during commissioning.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tl-date">Feb 2026 — Present</div>
+      </div>
+
+      <!-- 3. FSA Racing -->
+      <div class="tl-card">
+        <div class="tl-photo-box">
+          <img src="images/fsa_0.jpg" alt="UCT Formula Student" onerror="this.onerror=null; this.src='images/fsa_0.png'; this.onerror=function(){this.parentElement.innerText='FSA';};">
+        </div>
+        <div class="tl-body">
+          <h3>UCT Formula Student (FSA Racing)</h3>
+          <div class="tl-role">Electrical Team Lead</div>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Oversaw 6 sub-team leads and 28 members in designing, fabricating, and testing the low-voltage vehicle electrical architecture for an electric formula racecar.</li>
+                <li>Chaired technical design reviews and supervised telemetry acquisition and microcontroller debugging for track validation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tl-date">2024 — 2025</div>
+      </div>
+
+      <!-- 4. Tugwell Hall -->
+      <div class="tl-card">
+        <div class="tl-photo-box">
+          <img src="images/tugwell logo.jpg" alt="Tugwell Hall Residence" onerror="this.onerror=null; this.src='images/tugwell%20logo.jpg'; this.onerror=function(){this.src='images/tugwell logo.png'; this.onerror=function(){this.src='images/tugwell%20logo.png'; this.onerror=function(){this.parentElement.innerText='TH';};};};">
+        </div>
+        <div class="tl-body">
+          <h3>Tugwell Hall Residence, UCT</h3>
+          <div class="tl-role">Admin & Reception Subwarden · Residence Mentor · Front Desk Assistant</div>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Managed front-of-house operations, crisis response protocols, and logistics for a 400+ student residence alongside Warden team.</li>
+                <li>Provided mentorship and orientation to first year Tugwell Hall Residence students.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tl-date">2023 — 2025</div>
+      </div>
+
+      <!-- 5. UCT EBE -->
       <div class="tl-card">
         <div class="tl-photo-box">
           <img src="images/UCT EBE.jpg" alt="UCT Department of Electrical Engineering" onerror="this.onerror=null; this.src='images/UCT%20EBE.jpg'; this.onerror=function(){this.src='images/UCT EBE.png'; this.onerror=function(){this.parentElement.innerText='EBE';};};">
@@ -9,7 +583,7 @@
           <div class="tl-bullets-wrapper">
             <div class="tl-bullets-inner">
               <ul>
-                <li>Facilitated introductory electronics and circuit practicals, evaluated lab submissions, and mentored first-year engineers.</li>
+                <li>Facilitated introductory electronics and circuit practicals; evaluated lab submissions and mentored first-year engineers.</li>
                 <li>Volunteered with RS Components to guide high school students from disadvantaged communities into STEM disciplines.</li>
               </ul>
             </div>
@@ -17,6 +591,164 @@
         </div>
         <div class="tl-date">2023 — 2024</div>
       </div>
+
+      <!-- 6. UCT Governance -->
+      <div class="tl-card">
+        <div class="tl-photo-box">
+          <img src="images/UCT.jpg" alt="University Governance & Leadership" onerror="this.onerror=null; this.src='images/UCT.png'; this.onerror=function(){this.parentElement.innerText='UCT';};">
+        </div>
+        <div class="tl-body">
+          <h3>University Governance & Leadership</h3>
+          <div class="tl-role">Treasurer (UCT Gymnastics Club & GBC) · Class Representative</div>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Formulated operational club budgets, tracked equipment procurement, and audited financial statements.</li>
+                <li>Served as Class Representative for core undergraduate mathematics courses (MAM1024S & MAM2085F).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tl-date">2023 & 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TECHNICAL PROJECTS & RESEARCH ================= -->
+  <section id="projects">
+    <div class="section-head">
+      <span class="eyebrow">Technical Projects & Research</span>
+      <h2 style="margin-top:14px;">Selected engineering work.</h2>
+      <p>Structured around the STAR Method. Click on any project diagram to expand it.</p>
+    </div>
+
+    <!-- Project 1: VRFB (In Progress) -->
+    <div class="project-card">
+      <div class="project-visual">
+        <div class="project-visual-preview" onclick="openLightbox(this)">
+          <img src="reports/VRFB.jpg" alt="Schematic of a Vanadium Redox Flow Battery (VRFB)" onerror="this.onerror=null; this.src='reports/VRFB.png'; this.onerror=function(){this.src='images/VRFB.jpg'; this.onerror=function(){this.src='images/VRFB.png';};};">
+        </div>
+        <div class="project-artefacts">
+          <a href="reports/EEE4022S%202026%20Topic%20PB05%20Barendse.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Research Topic (PDF) ↗</a>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-header-top">
+          <span class="eyebrow">Power Electronics & Energy Storage</span>
+          <span class="status-pill">Final Year Project · In Progress</span>
+        </div>
+        <h3>Vanadium Redox Flow Battery & Bidirectional DC-DC Interface</h3>
+        <div class="stack-pills">
+          <span class="pill">MATLAB / Simulink</span>
+          <span class="pill">Simscape Battery</span>
+          <span class="pill">Power Electronics</span>
+          <span class="pill">State of Charge (SoC)</span>
+          <span class="pill">DC-Bus Regulation</span>
+        </div>
+        <div class="star">
+          <div class="star-row">
+            <span class="star-label">Situation</span>
+            <p>Grid-scale renewable storage requires durable solutions. However, flow battery terminal voltage varies non-linearly with electrolyte flow rates, stack chemistry, and pump losses.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Task</span>
+            <p>Model the dynamic electrochemical behavior of a multi-cell VRFB and design closed-loop bidirectional DC-DC converter controllers for stable DC-bus integration.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Action</span>
+            <p>Built equivalent-circuit models in MATLAB/Simulink. I designed multi-loop current, power, and voltage regulation schemes across active charge and discharge cycles.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Result</span>
+            <p>Evaluating stack efficiency versus electrolyte flow rates and confirming DC-bus voltage stability under dynamic grid step-load transients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: APC (Exxaro Pit Dewatering) -->
+    <div class="project-card">
+      <div class="project-visual">
+        <div class="project-visual-preview" onclick="openLightbox(this)">
+          <img src="reports/dewatering.jpg" alt="Direct-coupled dewatering pump installation at Grootegeluk open-cast pit (Bench 13)" onerror="this.onerror=null; this.src='reports/dewatering.png'; this.onerror=function(){this.src='images/dewatering.jpg'; this.onerror=function(){this.src='images/dewatering.png';};};">
+        </div>
+        <div class="project-artefacts">
+          <a href="reports/GG%20Vacation%20Work%20-%20Nyakallo%20Peete.pdf" target="_blank" rel="noopener" class="artefact-btn">📊 View Presentation Slides (PDF) ↗</a>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-header-top">
+          <span class="eyebrow">Industrial Automation & Energy Optimization</span>
+        </div>
+        <h3>Smart Drive System & Advanced Process Control (Exxaro Grootegeluk)</h3>
+        <div class="stack-pills">
+          <span class="pill">Advanced Process Control (APC)</span>
+          <span class="pill">Variable Speed Drives (VSD)</span>
+          <span class="pill">Hydraulic Affinity Laws</span>
+          <span class="pill">Scope 2 Emissions</span>
+        </div>
+        <div class="star">
+          <div class="star-row">
+            <span class="star-label">Situation</span>
+            <p>Open-cast pit dewatering on Bench 13 relied on binary Direct-on-Line starters, causing hydraulic water-hammer shocks, pipe fatigue, and high electrical energy costs.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Task</span>
+            <p>Develop an automation proposal using Variable Speed Drives and an APC control layer to automate pumping, protect pipe infrastructure, and cut Scope 2 carbon emissions.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Action</span>
+            <p>Specified four 280 kW WEG CFW11 VSDs. I designed an APC state machine with automated fault detection for cavitation and pipe bursts, while modeling savings using Hydraulic Affinity Law 3.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Result</span>
+            <p>Demonstrated 4.32 GWh annual energy savings across four pumps, yielding R5.21M annual OPEX savings, a R1.11M tax rebate, and 100% payback in Year 1.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: 3rd Year Design Micromouse Power Board -->
+    <div class="project-card">
+      <div class="project-visual">
+        <div class="project-visual-preview" onclick="openLightbox(this)">
+          <img src="reports/Power%20Board.jpg" alt="3D CAD render of the multi-rail power distribution PCB" onerror="this.onerror=null; this.src='reports/Power%20Board.png'; this.onerror=function(){this.src='reports/Power Board.jpg'; this.onerror=function(){this.src='images/Power Board.jpg';};};">
+        </div>
+        <div class="project-artefacts">
+          <a href="reports/EEE3088F%202025%20Project%20Report%20PTXNYA001.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Design Report (PDF) ↗</a>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-header-top">
+          <span class="eyebrow">Embedded Hardware & Power PCB Design</span>
+        </div>
+        <h3>Micromouse X Multi-Rail Power Management & Motor Driver PCB</h3>
+        <div class="stack-pills">
+          <span class="pill">Altium / KiCad</span>
+          <span class="pill">Buck-Boost (TPS63020)</span>
+          <span class="pill">Dual H-Bridge (DRV8833)</span>
+          <span class="pill">I2C Sensing (INA219)</span>
+        </div>
+        <div class="star">
+          <div class="star-row">
+            <span class="star-label">Situation</span>
+            <p>An autonomous maze-solving Micromouse robot required an isolated, compact power PCB to drive four motors bidirectionally and monitor battery health under a strict $70 budget.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Task</span>
+            <p>Design, route, fabricate, and test a multi-channel power distribution and motor driver PCB within an 82 x 60 mm mechanical footprint.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Action</span>
+            <p>Integrated dual TPS63020 buck-boost regulators for 5 V and 3.3 V rails, two DRV8833 dual H-bridges, TPS22917 high-side switches, and an INA219 current monitor over I2C.</p>
+          </div>
+          <div class="star-row">
+            <span class="star-label">Result</span>
+            <p>Passed all acceptance tests, verifying 5.098 V rail stability, clean bidirectional motor control, and delivered the board under budget at $25.79.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Project 4: Polar Sea-Ice Flux Profiler (MARIS) -->
     <div class="project-card">
@@ -43,19 +775,19 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>Monitoring Antarctic sea-ice melt requires continuous vertical thermal profiling in the Marginal Ice Zone, where freezing temperatures often cause system lockups and data corruption.</p>
+            <p>Monitoring Antarctic sea-ice melt requires continuous in-situ vertical thermal profiling in the Marginal Ice Zone, where freezing temperatures risk system lockups and data corruption.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Developed firmware on an STM32 microcontroller to acquire multi-depth temperatures, calculate conductive heat flux, and ensure autonomous system recovery.</p>
+            <p>Develop the firmware on an STM32 microcontroller to acquire multi-depth temperatures, calculate conductive heat flux, and ensure autonomous system recovery.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>Sampled a 6-node DS18B20 1-Wire string and calculated Fourier heat flux. I implemented moving-average filtering, error-masking for faulty data, and register polling to audit hardware resets.</p>
+            <p>Sampled a 6-node DS18B20 1-Wire string; calculated Fourier heat flux; implemented moving-average filtering, NAN fault-masking, and register polling for IWDG/BOR hardware reset auditing.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>Achieved temperature accuracy within 0.1 degrees Celsius, validated data streaming to telemetry, and confirmed efficient low-power operation.</p>
+            <p>Achieved post-calibration temperature accuracy within +/-0.1 deg C, validated CSV packet streaming to telemetry, and confirmed low-power duty cycling.</p>
           </div>
         </div>
       </div>
@@ -85,19 +817,19 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>The 16-bit StarCore-1 RISC CPU lacked native trigonometric hardware, making it difficult to perform fast coordinate transforms for robotic applications.</p>
+            <p>The 16-bit StarCore-1 RISC CPU lacked native trigonometric hardware, requiring slow software approximations for robotic coordinate transforms.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Designed, synthesized, and verified a 16-iteration CORDIC co-processor in Verilog HDL to accelerate sine and cosine calculations directly in hardware.</p>
+            <p>Design, synthesize, and verify a 16-iteration CORDIC co-processor in Verilog HDL to accelerate sine and cosine calculations in hardware.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>I implemented a 4-state state machine using shift-and-add arithmetic and an arctangent lookup table. I also extended the CPU control unit with custom opcodes, pipeline stall logic, and a write-back multiplexer.</p>
+            <p>Implemented a 4-state FSM using shift-and-add arithmetic and an arctangent LUT; extended the CPU Control Unit with custom opcodes, pipeline stall logic, and a write-back multiplexer.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
-            <p>The co-processor computes trigonometric outputs in 19 clock cycles at 100 MHz. It achieves high precision while using only about 150 logic cells on the FPGA.</p>
+            <p>Computed trigonometric outputs in 19 clock cycles (190 ns) with error under 2^-13 across the [-pi/2, pi/2] range, requiring only ~150 LUTs for FPGA implementation.</p>
           </div>
         </div>
       </div>
@@ -127,15 +859,15 @@
         <div class="star">
           <div class="star-row">
             <span class="star-label">Situation</span>
-            <p>Speed and position control of a DC servo motor was hindered by static dead-bands, digital-to-analog converter saturation, and varying inertial loads across four different system configurations.</p>
+            <p>Speed and position control of a DC servo motor is hindered by static dead-bands (+/-1.7 V), DAC saturation, and varying inertial loads across 4 different configurations.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Task</span>
-            <p>Performed system identification and synthesized a robust digital cascade controller that meets strict bounds for settling time and overshoot.</p>
+            <p>Perform empirical system identification and synthesize a robust digital cascade controller meeting strict time and frequency-domain settling time and overshoot bounds.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Action</span>
-            <p>I derived plant transfer functions using least-squares regression. Then, I performed loop shaping on the inner speed controller and outer position compensator while tuning hardware parameters to eliminate actuator saturation.</p>
+            <p>Derived plant transfer functions using least-squares regression; performed loop shaping on an inner speed controller and outer position compensator; tuned hardware parameters to eliminate actuator saturation.</p>
           </div>
           <div class="star-row">
             <span class="star-label">Result</span>
@@ -144,3 +876,96 @@
         </div>
       </div>
     </div>
+
+  </section>
+
+  <!-- ================= IMAGE LIGHTBOX MODAL ================= -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-container" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close image">✕</button>
+      <img id="lightboxImg" src="" alt="Expanded View">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- ================= CONTACT / FOOTER ================= -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div>
+        <span class="eyebrow" style="color:#8592AC;">Contact</span>
+        <h2>Let's build something together.</h2>
+        <p>Open to graduate engineering opportunities and collaborations in control systems, embedded hardware, and intelligent systems design.</p>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary">View Resume ↗</a>
+      </div>
+      <div style="display:flex; gap:56px; flex-wrap:wrap;">
+        <div class="contact-links">
+          <a href="mailto:Nyakipeete@gmail.com" title="Click to email me">Nyakipeete@gmail.com</a>
+          <a href="https://www.linkedin.com/in/nyakallo-peete-b27a7a237/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/nyalcina" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="footer-quicklinks">
+          <span class="eyebrow">Quick Links</span>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+        </div>
+      </div>
+    </div>
+    <footer class="sitefoot">
+      <span>© 2026 Nyakallo Peete. All rights reserved.</span>
+      <span>Cape Town, South Africa</span>
+    </footer>
+  </section>
+
+</main>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.navlinks a[href^="#"]');
+  function onScroll(){
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 130 && rect.bottom >= 130){ current = sec.id; }
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Lightbox Zoom Logic
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+
+  function openLightbox(element) {
+    const img = element.querySelector('img');
+    if (!img) return;
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxCaption.textContent = img.alt || 'Project Diagram';
+    lightboxModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(event) {
+    lightboxModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
