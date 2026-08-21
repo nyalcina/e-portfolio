@@ -116,7 +116,7 @@
   .about-grid p{color:var(--ink-soft); margin-bottom:16px; font-size:1.01rem;}
   .about-grid p:last-child{margin-bottom:0;}
   
-  /* Overlapping Photos (Slot 2 top overlapped by Slot 3 bottom's top-left corner) */
+  /* Overlapping Photos */
   .about-photos-stacked{position:relative; width:100%; max-width:400px; margin:0 auto;}
   .about-photo-top{
     position:relative; width:78%; aspect-ratio:4/3; border-radius:var(--radius-md);
@@ -132,52 +132,88 @@
 
   .aspirations-intro{max-width:760px; margin-bottom:36px;}
   .aspirations-intro p{color:var(--ink-soft); font-size:1.04rem;}
+  
+  /* Aspirations with Longer Photos */
   .aspiration-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
   .aspiration-card{
     background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md);
-    overflow:hidden; transition:transform 0.2s ease, box-shadow 0.2s ease; display:flex; flex-direction:column;
+    overflow:hidden; transition:transform 0.25s ease, box-shadow 0.25s ease; display:flex; flex-direction:column;
   }
   .aspiration-card:hover{transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(17,30,61,0.2);}
-  .aspiration-card .img{aspect-ratio:16/10; background:var(--bg-cool); overflow:hidden; border-bottom:1px solid var(--border);}
-  .aspiration-card .img img{width:100%; height:100%; object-fit:cover;}
-  .aspiration-card .body{padding:22px; flex:1;}
-  .aspiration-card h4{font-size:1.05rem; margin-bottom:12px;}
+  .aspiration-card .img{
+    width:100%; aspect-ratio:4/3; min-height:220px; background:var(--bg-cool); overflow:hidden; border-bottom:1px solid var(--border);
+  }
+  .aspiration-card .img img{width:100%; height:100%; object-fit:cover; object-position:center; transition:transform 0.3s ease;}
+  .aspiration-card:hover .img img{transform:scale(1.03);}
+  .aspiration-card .body{padding:24px; flex:1;}
+  .aspiration-card h4{font-size:1.08rem; margin-bottom:12px;}
   .aspiration-card ul li{
-    font-size:0.88rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:8px; line-height:1.5;
+    font-size:0.9rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:8px; line-height:1.5;
   }
   .aspiration-card ul li::before{
     content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:var(--navy);
   }
 
-  /* ===== EXPERIENCE ===== */
-  .timeline{display:flex; flex-direction:column;}
+  /* ===== EXPERIENCE WITH HOVER REVEAL ===== */
+  .timeline{display:flex; flex-direction:column; gap:12px;}
   .tl-card{
-    display:grid; grid-template-columns:64px 1fr auto; gap:24px; align-items:start;
-    padding:28px 0; border-top:1px solid var(--border);
+    display:grid; grid-template-columns:68px 1fr auto; gap:24px; align-items:start;
+    padding:20px 24px; border:1px solid var(--border); background:var(--white);
+    border-radius:var(--radius-md); transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor:pointer;
   }
-  .tl-card:first-child{border-top:none;}
+  .tl-card:hover{
+    border-color:var(--navy);
+    box-shadow:0 12px 28px -10px rgba(29,43,79,0.12);
+    transform:translateY(-2px);
+    background:var(--white);
+  }
   .tl-photo-box{
-    width:56px; height:56px; border-radius:12px; background:var(--navy); color:var(--white);
+    width:60px; height:60px; border-radius:12px; background:var(--white); color:var(--white);
     display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--border);
-    flex-shrink:0; font-family:var(--display); font-weight:700; font-size:0.85rem;
+    flex-shrink:0; font-family:var(--display); font-weight:700; font-size:0.85rem; padding:4px;
   }
-  .tl-photo-box img{width:100%; height:100%; object-fit:cover;}
-  .tl-body h3{font-size:1.12rem; margin-bottom:2px;}
-  .tl-role{color:var(--navy); font-weight:600; font-size:0.92rem; margin-bottom:10px;}
-  .tl-body ul li{
-    font-size:0.92rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:6px; max-width:680px;
+  .tl-photo-box img{width:100%; height:100%; object-fit:contain; border-radius:8px;}
+  .tl-body h3{font-size:1.15rem; margin-bottom:2px;}
+  .tl-role{color:var(--navy); font-weight:600; font-size:0.92rem; margin-bottom:4px;}
+  
+  /* Smooth Hover Dropdown for Bullets */
+  .tl-bullets-wrapper{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .tl-body ul li::before{
+  .tl-bullets-inner{
+    overflow:hidden;
+  }
+  .tl-card:hover .tl-bullets-wrapper{
+    grid-template-rows:1fr;
+  }
+  .tl-bullets-inner ul{
+    padding-top:12px;
+    margin-top:8px;
+    border-top:1px dashed var(--border);
+  }
+  .tl-bullets-inner ul li{
+    font-size:0.92rem; color:var(--ink-soft); padding-left:14px; position:relative; margin-bottom:6px; max-width:720px; line-height:1.55;
+  }
+  .tl-bullets-inner ul li::before{
     content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:var(--steel);
   }
+  .tl-hint{
+    font-family:var(--mono); font-size:0.68rem; color:var(--grey-text); opacity:0.75;
+    transition:opacity 0.2s; margin-top:2px; display:inline-block;
+  }
+  .tl-card:hover .tl-hint{opacity:0; height:0; overflow:hidden; margin:0;}
+
   .tl-date{
-    font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--grey-text); white-space:nowrap; padding-top:6px;
-    background:var(--bg-cool); padding:4px 10px; border-radius:20px; border:1px solid var(--border);
+    font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--grey-text); white-space:nowrap; padding-top:4px;
+    background:var(--bg-cool); padding:6px 12px; border-radius:20px; border:1px solid var(--border);
   }
   @media (max-width:700px){
-    .tl-card{grid-template-columns:48px 1fr;}
+    .tl-card{grid-template-columns:52px 1fr; padding:16px;}
     .tl-date{grid-column:2; padding-top:2px; order:3; width:fit-content; margin-top:6px;}
-    .tl-photo-box{width:44px; height:44px; font-size:0.78rem;}
+    .tl-photo-box{width:48px; height:48px; font-size:0.78rem;}
   }
 
   /* ===== PROJECTS ===== */
@@ -297,7 +333,7 @@
   <section id="home">
     <div class="hero-grid">
       <div class="hero-portrait">
-        <!-- Slot 1: Home -->
+        <!-- Hero: Home -->
         <img src="images/Home.jpg" alt="Nyakallo Peete" onerror="this.onerror=null; this.src='images/Home.png';">
       </div>
       <div class="hero-copy">
@@ -331,14 +367,12 @@
         <p>When I’m not debugging firmware or working on control algorithms, you’ll usually find me experimenting with new recipes, listening to soulful grooves, or recharging outdoors.</p>
       </div>
       
-      <!-- Overlapping Photos (Slot 2 top overlapped by Slot 3 bottom) -->
+      <!-- Overlapping Photos (lin lin top overlapped by Radience bottom-left) -->
       <div class="about-photos-stacked">
         <div class="about-photo-top">
-          <!-- Slot 2: lin lin -->
           <img src="images/lin lin.jpg" alt="Creative & String Instruments" onerror="this.onerror=null; this.src='images/lin lin.png';">
         </div>
         <div class="about-photo-bottom">
-          <!-- Slot 3: Radience -->
           <img src="images/Radience.jpg" alt="Life & Discipline" onerror="this.onerror=null; this.src='images/Radience.png';">
         </div>
       </div>
@@ -350,7 +384,7 @@
     </div>
 
     <div class="aspiration-grid">
-      <!-- Slot 4: BAB -->
+      <!-- Card 1: BAB -->
       <div class="aspiration-card">
         <div class="img">
           <img src="images/BAB.jpg" alt="Creative & Performing Arts" onerror="this.onerror=null; this.src='images/BAB.png';">
@@ -364,7 +398,7 @@
           </ul>
         </div>
       </div>
-      <!-- Slot 5: third -->
+      <!-- Card 2: third -->
       <div class="aspiration-card">
         <div class="img">
           <img src="images/third.jpg" alt="Impact & Community" onerror="this.onerror=null; this.src='images/third.png';">
@@ -378,10 +412,10 @@
           </ul>
         </div>
       </div>
-      <!-- Slot 6: padel -->
+      <!-- Card 3: Padel (Longer photo container) -->
       <div class="aspiration-card">
         <div class="img">
-          <img src="images/padel.jpg" alt="Health & Discipline" onerror="this.onerror=null; this.src='images/padel.png';">
+          <img src="images/Padel.jpg" alt="Health & Discipline" onerror="this.onerror=null; this.src='images/padel.jpg'; this.onerror=function(){this.src='images/Padel.png';}">
         </div>
         <div class="body">
           <h4>Health, Discipline & Life Milestones</h4>
@@ -395,106 +429,136 @@
     </div>
   </section>
 
-  <!-- ================= EXPERIENCE ================= -->
+  <!-- ================= EXPERIENCE (HOVER REVEAL) ================= -->
   <section id="experience">
     <div class="section-head">
       <span class="eyebrow">Leadership & Experience</span>
       <h2 style="margin-top:14px;">Where I've put engineering and leadership to work.</h2>
-      <p>Industrial vacation work, systems integration, cross-functional leadership, and academic tutoring.</p>
+      <p>Hover over any role to explore project contributions, technical scope, and key deliverables.</p>
     </div>
     <div class="timeline">
       
-      <!-- Experience 1: Exxaro -->
+      <!-- 1. Exxaro -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-exxaro.jpg" alt="Exxaro" onerror="this.onerror=null; this.parentElement.innerText='EXX';">
+          <img src="images/Exxaro.jpg" alt="Exxaro Resources" onerror="this.onerror=null; this.src='images/Exxaro.png'; this.onerror=function(){this.parentElement.innerText='EXX';}">
         </div>
         <div class="tl-body">
           <h3>Exxaro Resources</h3>
           <div class="tl-role">Engineering Vacation Student</div>
-          <ul>
-            <li>Completed consecutive industrial engineering vacation work placements during academic recesses.</li>
-            <li>Engaged in mining operations, automation audits, pit dewatering systems analysis, and industrial process workflows.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Completed consecutive industrial engineering vacation work placements during academic recesses.</li>
+                <li>Engaged in mining operations, automation audits, pit dewatering systems analysis, and industrial process workflows.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">Dec 2023, 2024 & 2025</div>
       </div>
 
-      <!-- Experience 2: BioHydra -->
+      <!-- 2. BioHydra Technologies -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-biohydra.jpg" alt="BioHydra" onerror="this.onerror=null; this.parentElement.innerText='BH';">
+          <img src="images/BioHydra Technologies.jpg" alt="BioHydra Technologies" onerror="this.onerror=null; this.src='images/BioHydra Technologies.png'; this.onerror=function(){this.parentElement.innerText='BH';}">
         </div>
         <div class="tl-body">
           <h3>BioHydra Technologies</h3>
           <div class="tl-role">Systems Integration Lead</div>
-          <ul>
-            <li>Lead cross-subsystem integration across mechanical actuation, power electronics, and embedded logic.</li>
-            <li>Standardize communication interfaces and direct hardware-in-the-loop (HIL) testing during commissioning.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Lead cross-subsystem integration across mechanical actuation, power electronics, and embedded logic.</li>
+                <li>Standardize communication interfaces and direct hardware-in-the-loop (HIL) testing during commissioning.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">2025 — Present</div>
       </div>
 
-      <!-- Experience 3: FSA Racing -->
+      <!-- 3. FSA Racing -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-fsa.jpg" alt="FSA Racing" onerror="this.onerror=null; this.parentElement.innerText='FSA';">
+          <img src="images/fsa_0.jpg" alt="UCT Formula Student" onerror="this.onerror=null; this.src='images/fsa_0.png'; this.onerror=function(){this.parentElement.innerText='FSA';}">
         </div>
         <div class="tl-body">
           <h3>UCT Formula Student (FSA Racing)</h3>
           <div class="tl-role">Electrical Team Lead</div>
-          <ul>
-            <li>Directed design, routing, and fabrication of the vehicle’s low-voltage electrical harness and power distribution.</li>
-            <li>Supervised telemetry acquisition, sensor integration, and real-time microcontroller debugging for track validation.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Directed design, routing, and fabrication of the vehicle’s low-voltage electrical harness and power distribution.</li>
+                <li>Supervised telemetry acquisition, sensor integration, and real-time microcontroller debugging for track validation.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">2024 — 2025</div>
       </div>
 
-      <!-- Experience 4: Tugwell Hall -->
+      <!-- 4. Tugwell Hall -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-tugwell.jpg" alt="Tugwell Hall" onerror="this.onerror=null; this.parentElement.innerText='TH';">
+          <img src="images/tugwell logo.jpg" alt="Tugwell Hall Residence" onerror="this.onerror=null; this.src='images/tugwell logo.png'; this.onerror=function(){this.parentElement.innerText='TH';}">
         </div>
         <div class="tl-body">
           <h3>Tugwell Hall Residence, UCT</h3>
           <div class="tl-role">Admin & Reception Subwarden · Residence Mentor · Front Desk Assistant</div>
-          <ul>
-            <li>Managed front-of-house operations, crisis response protocols, and logistics for a 400+ student residence.</li>
-            <li>Provided academic orientation and mentorship to first-year engineering and science students.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Managed front-of-house operations, crisis response protocols, and logistics for a 400+ student residence.</li>
+                <li>Provided academic orientation and mentorship to first-year engineering and science students.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">2023 — 2025</div>
       </div>
 
-      <!-- Experience 5: UCT EEE Tutor -->
+      <!-- 5. UCT EBE -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-uct.jpg" alt="UCT EEE" onerror="this.onerror=null; this.parentElement.innerText='EE';">
+          <img src="images/UCT EBE.jpg" alt="UCT Department of Electrical Engineering" onerror="this.onerror=null; this.src='images/UCT EBE.png'; this.onerror=function(){this.parentElement.innerText='EBE';}">
         </div>
         <div class="tl-body">
           <h3>UCT Department of Electrical Engineering</h3>
           <div class="tl-role">Academic Tutor</div>
-          <ul>
-            <li>Facilitated laboratory practicals and tutorial workshops in circuit analysis, instrumentation, and C/MATLAB debugging.</li>
-            <li>Delivered constructive feedback on technical laboratory reports to improve analytical rigor.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Facilitated laboratory practicals and tutorial workshops in circuit analysis, instrumentation, and C/MATLAB debugging.</li>
+                <li>Delivered constructive feedback on technical laboratory reports to improve analytical rigor.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">2023 — 2024</div>
       </div>
 
-      <!-- Experience 6: Governance -->
+      <!-- 6. UCT Governance -->
       <div class="tl-card">
         <div class="tl-photo-box">
-          <img src="images/exp-governance.jpg" alt="Governance" onerror="this.onerror=null; this.parentElement.innerText='GC';">
+          <img src="images/UCT.jpg" alt="University Governance & Leadership" onerror="this.onerror=null; this.src='images/UCT.png'; this.onerror=function(){this.parentElement.innerText='UCT';}">
         </div>
         <div class="tl-body">
           <h3>University Governance & Leadership</h3>
           <div class="tl-role">Treasurer (UCT Gymnastics Club & GBC)</div>
-          <ul>
-            <li>Formulate operational budgets, track expenditures, manage procurement, and ensure financial accountability.</li>
-          </ul>
+          <span class="tl-hint">Hover to view deliverables ▾</span>
+          <div class="tl-bullets-wrapper">
+            <div class="tl-bullets-inner">
+              <ul>
+                <li>Formulate operational budgets, track expenditures, manage procurement, and ensure financial accountability.</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="tl-date">2023 & 2026</div>
       </div>
@@ -513,7 +577,6 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Slot 7: Empty placeholder -->
           <div class="placeholder-graphic">⚡ VRFB & Bidirectional<br>Topology Diagram</div>
         </div>
         <div class="project-artefacts">
@@ -557,7 +620,6 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Slot 8: Empty placeholder -->
           <div class="placeholder-graphic">📊 APC Control &<br>Hydraulics Curves</div>
         </div>
         <div class="project-artefacts">
@@ -600,7 +662,6 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Slot 9: Empty placeholder -->
           <div class="placeholder-graphic">🔌 Multi-Rail Power PCB<br>Schematic & Layout</div>
         </div>
         <div class="project-artefacts">
@@ -643,7 +704,6 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Slot 10: Empty placeholder -->
           <div class="placeholder-graphic">❄️ STM32 Telemetry &<br>Thermistor String Array</div>
         </div>
         <div class="project-artefacts">
@@ -686,7 +746,6 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Slot 11: Empty placeholder -->
           <div class="placeholder-graphic">⚙️ 16-Bit Pipelined CORDIC<br>Verilog Architecture</div>
         </div>
         <div class="project-artefacts">
