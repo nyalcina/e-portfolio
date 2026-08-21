@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyakallo Peete — Mechatronics & Control Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0E0F12;
+    --navy: #1D2B4F;
+    --navy-light: #2563EB;
+    --steel: #64748B;
+    --silver: #E2E8F0;
+    --fog: #F8FAFC;
+    --white: #FFFFFF;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
+
+  /* ---- STICKY HEADER ---- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--silver);
+  }
+  nav.wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px; padding-bottom: 16px;
+  }
+  .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; }
+  .logo span { color: var(--navy-light); }
+  .navlinks { display: flex; gap: 28px; align-items: center; }
+  .navlinks a {
+    font-size: 0.88rem; font-weight: 500; color: var(--ink);
+    position: relative; padding: 4px 0; transition: color 0.2s;
+  }
+  .navlinks a:hover { color: var(--navy-light); }
+  .resume-btn {
+    background: var(--ink); color: var(--white) !important;
+    padding: 8px 18px; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+    transition: all 0.2s ease; border: 1px solid var(--ink);
+  }
+  .resume-btn:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-1px); }
+
+  /* ---- HERO ---- */
+  .hero-section {
+    padding-top: 130px; padding-bottom: 70px;
+    display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: center;
+  }
+  .hero-img-box {
+    width: 100%; height: 500px; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--silver); background: var(--fog);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  }
+  .hero-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .hero-content { display: flex; flex-direction: column; gap: 16px; }
+  .hero-name { font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.05; }
+  .hero-degree { font-size: 1.15rem; font-weight: 600; color: var(--steel); }
+  .hero-lede { font-size: 1.02rem; color: #334155; line-height: 1.65; max-width: 540px; }
+  
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .tech-pill {
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink); background: var(--fog); border: 1px solid var(--silver);
+    padding: 4px 12px; border-radius: 6px;
+  }
+
+  .hero-cta-group { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 100px; font-size: 0.88rem; font-weight: 600;
+    transition: all 0.2s ease; cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--white); border: 1px solid var(--ink); }
+  .btn-primary:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-2px); }
+  .btn-secondary { background: var(--fog); color: var(--ink); border: 1px solid var(--silver); }
+  .btn-secondary:hover { background: var(--silver); transform: translateY(-2px); }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 80px 0; border-top: 1px solid var(--silver); }
+  .section-head { margin-bottom: 40px; max-width: 650px; }
+  .section-head .eyebrow { margin-bottom: 8px; }
+  .section-head h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+  .section-head p { color: var(--steel); font-size: 0.98rem; margin-top: 6px; }
+
+  /* ---- ABOUT ME ---- */
+  .about-top-grid {
+    display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center;
+    background: var(--white); border: 1px solid var(--silver); border-radius: 20px;
+    padding: 36px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+  }
+  .about-text p { font-size: 0.98rem; color: #334155; margin-bottom: 14px; line-height: 1.7; }
+  .about-text p:last-child { margin-bottom: 0; }
+  
+  .photo-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stack-photo {
+    height: 190px; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--silver); background: var(--fog);
+  }
+  .stack-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .stack-photo-wide { grid-column: span 2; height: 140px; }
+
+  /* ---- ASPIRATIONS GRID ---- */
+  .aspirations-block {
+    margin-top: 36px; background: var(--ink); border-radius: 20px;
+    padding: 40px; color: var(--white); border: 1px solid #1E293B;
+  }
+  .aspirations-intro h3 { font-size: 1.6rem; color: var(--white); margin-bottom: 8px; }
+  .aspirations-intro p { font-size: 0.95rem; color: #94A3B8; max-width: 720px; margin-bottom: 28px; }
+  
+  .aspirations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .asp-card {
+    background: #161B26; border: 1px solid #28334E; border-radius: 16px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: all 0.25s ease;
+  }
+  .asp-card:hover { border-color: var(--navy-light); transform: translateY(-3px); }
+  .asp-card-img { width: 100%; height: 160px; background: #0E0F12; overflow: hidden; }
+  .asp-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .asp-card-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .asp-card-body h4 { font-size: 1.05rem; color: var(--white); }
+  .asp-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .asp-card-body li {
+    font-size: 0.85rem; color: #CBD5E1; line-height: 1.5;
+    position: relative; padding-left: 14px;
+  }
+  .asp-card-body li::before {
+    content: "•"; color: #60A5FA; position: absolute; left: 0; font-weight: bold;
+  }
+
+  /* ---- EXPERIENCE ---- */
+  .exp-list { display: flex; flex-direction: column; gap: 18px; }
+  .exp-card {
+    display: flex; gap: 24px; background: var(--white); border: 1px solid var(--silver);
+    border-radius: 16px; padding: 24px 28px; transition: all 0.25s ease;
+    align-items: flex-start;
+  }
+  .exp-card:hover { border-color: #94A3B8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04); }
+  .exp-logo {
+    width: 60px; height: 60px; min-width: 60px; border-radius: 12px;
+    background: var(--fog); border: 1px solid var(--silver);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; color: var(--steel);
+  }
+  .exp-content { flex: 1; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
+  .exp-header h3 { font-size: 1.15rem; color: var(--ink); }
+  .exp-role { font-size: 0.92rem; font-weight: 600; color: var(--navy-light); margin-top: 2px; }
+  .exp-date {
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+    color: var(--steel); background: var(--fog); padding: 4px 12px;
+    border-radius: 20px; border: 1px solid var(--silver);
+  }
+  .exp-bullets { margin-top: 10px; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .exp-bullets li { font-size: 0.9rem; color: #334155; line-height: 1.6; }
+
+  /* ---- PROJECTS ---- */
+  .project-list { display: flex; flex-direction: column; gap: 28px; }
+  .project-card {
+    display: grid; grid-template-columns: 1fr 1.35fr; gap: 28px;
+    background: var(--white); border: 1px solid var(--silver); border-radius: 20px;
+    padding: 28px; transition: all 0.25s ease; align-items: start;
+  }
+  .project-card:hover { border-color: #94A3B8; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05); }
+  .proj-visual { display: flex; flex-direction: column; gap: 12px; }
+  .proj-img-box {
+    width: 100%; height: 200px; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--silver); background: var(--ink);
+  }
+  .proj-img-box img { width: 100%; height: 100%; object-fit: cover; }
+  .proj-btns { display: flex; flex-direction: column; gap: 8px; }
+  .btn-sm {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 10px 14px; font-size: 0.82rem; font-weight: 600; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-sm-primary { background: var(--ink); color: var(--white); border: 1px solid var(--ink); }
+  .btn-sm-primary:hover { background: var(--navy); }
+  .btn-sm-secondary { background: var(--fog); color: var(--ink); border: 1px solid var(--silver); }
+  .btn-sm-secondary:hover { background: var(--silver); }
+
+  .proj-details { display: flex; flex-direction: column; gap: 8px; }
+  .proj-details h3 { font-size: 1.2rem; color: var(--ink); line-height: 1.3; }
+  .star-box { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+  .star-row { font-size: 0.88rem; color: #334155; line-height: 1.55; }
+  .star-tag { font-weight: 700; color: var(--ink); }
+
+  /* ---- FOOTER / CONTACT ---- */
+  footer {
+    background: var(--ink); color: var(--white); border-radius: 24px 24px 0 0;
+    padding: 60px 0 30px; margin-top: 40px;
+  }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 36px; padding-bottom: 40px; border-bottom: 1px solid #1E293B; }
+  .footer-brand h2 { font-size: 1.6rem; color: var(--white); }
+  .footer-brand p { font-size: 0.9rem; color: #94A3B8; margin-top: 6px; max-width: 400px; }
+  .footer-links-group { display: flex; gap: 48px; flex-wrap: wrap; }
+  .footer-col h4 { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; color: #60A5FA; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 0.88rem; color: #CBD5E1; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.82rem; color: #64748B; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 850px) {
+    .hero-section, .about-top-grid, .project-card { grid-template-columns: 1fr; }
+    .aspirations-grid { grid-template-columns: 1fr; }
+    .navlinks a:not(.resume-btn) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">NP<span>.</span></div>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" class="resume-btn">Resume ⤓</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section id="home" class="hero-section" style="border-top:none;">
+    <div class="hero-img-box">
+      <!-- Direct photo link (Replace src with your uploaded image) -->
+      <img src="https://static.wixstatic.com/media/1c5e84_ca32f3703f2f4f51baeab5d56e043d56~mv2.png" alt="Nyakallo Peete" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'">
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">Mechatronics & Control Systems Engineer</span>
+      <h1 class="hero-name">Nyakallo Peete</h1>
+      <div class="hero-degree">BSc.Eng Mechatronics (Final Year) · Cape Town, ZA</div>
+      <p class="hero-lede">Designing robust embedded firmware, dynamic control architectures, and intelligent hardware solutions from concept to real-world deployment.</p>
+      
+      <div class="tech-pills">
+        <span class="tech-pill">Control Systems</span>
+        <span class="tech-pill">Embedded Firmware</span>
+        <span class="tech-pill">MATLAB / Simulink</span>
+        <span class="tech-pill">Verilog HDL</span>
+        <span class="tech-pill">Power Electronics</span>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn btn-primary">Explore Projects ↓</a>
+        <a href="#about" class="btn btn-secondary">About Me →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & ASPIRATIONS -->
+  <section id="about">
+    <div class="section-head">
+      <p class="eyebrow">01 · About & Vision</p>
+      <h2>Curiosity, discipline, and creativity.</h2>
+    </div>
+
+    <!-- Narrative Block -->
+    <div class="about-top-grid">
+      <div class="about-text">
+        <p>Engineering to me is more than equations and schematics—it’s about understanding how complex physical systems interact and designing solutions that work reliably in the real world.</p>
+        <p>Beyond technical coursework and system design, I bring the same curiosity and discipline into my creative and everyday life. Whether I’m deconstructing basslines, practicing string instruments, or engaging in mindful physical training, I value continuous learning, precision, and finding harmony between analytical structure and creative expression.</p>
+        <p>When I’m not debugging firmware or working on control algorithms, you’ll usually find me experimenting with new recipes, listening to soulful grooves, or recharging outdoors.</p>
+      </div>
+
+      <!-- Right Photo Stack -->
+      <div class="photo-stack">
+        <div class="stack-photo">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Instruments">
+        </div>
+        <div class="stack-photo">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Movement">
+        </div>
+        <div class="stack-photo stack-photo-wide">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Landscape">
+        </div>
+      </div>
+    </div>
+
+    <!-- Aspirations Dark Block -->
+    <div class="aspirations-block">
+      <div class="aspirations-intro">
+        <h3>Aspirations & Future Milestones</h3>
+        <p>There is more than meets the eye. Beyond engineering, I refuse to box myself in—I am eager to experience many facets of life. I believe dreams and aspirations provide perspective, motivation, and hope. We all have different parts of ourselves that need to be nurtured and invested in.</p>
+      </div>
+
+      <div class="aspirations-grid">
+        <!-- Card 1 -->
+        <div class="asp-card">
+          <div class="asp-card-img">
+            <!-- Replace with your bass/guitar photo -->
+            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=600&q=80" alt="Music">
+          </div>
+          <div class="asp-card-body">
+            <h4>Creative & Performing Arts</h4>
+            <ul>
+              <li>Dance with The Rockettes</li>
+              <li>Sing with the Brooklyn Tabernacle Choir & Joyous Celebration</li>
+              <li>Direct and produce an original screenplay</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="asp-card">
+          <div class="asp-card-img">
+            <!-- Replace with your dress/portrait photo -->
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Community">
+          </div>
+          <div class="asp-card-body">
+            <h4>Impact, Enterprise & Community</h4>
+            <ul>
+              <li>Establish a foundation dedicated to uplifting and mentoring youth</li>
+              <li>Build a production company creating inspiring children’s media</li>
+              <li>Ski across the Swiss Alps</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="asp-card">
+          <div class="asp-card-img">
+            <!-- Replace with your sport/gym photo -->
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Discipline">
+          </div>
+          <div class="asp-card-body">
+            <h4>Health, Discipline & Milestones</h4>
+            <ul>
+              <li>Master 10 clean pull-ups and strict push-ups</li>
+              <li>Build a warm, healthy, and loving home as a devoted homemaker</li>
+              <li>Cultivate a life rooted in continuous learning and community</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head">
+      <p class="eyebrow">02 · Track Record</p>
+      <h2>Leadership & Experience</h2>
+      <p>Systems engineering, technical mentorship, and institutional governance.</p>
+    </div>
+
+    <div class="exp-list">
+      <!-- 1 -->
+      <div class="exp-card">
+        <div class="exp-logo">BH</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3>BioHydra</h3>
+              <div class="exp-role">Systems Integration Lead</div>
+            </div>
+            <span class="exp-date">2025 – Present</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Lead end-to-end integration across mechanical actuation, power electronics, and embedded firmware to ensure reliable system interoperability.</li>
+            <li>Standardize interface definitions, communication protocols, and sensor-actuator timing synchronization.</li>
+            <li>Conduct hardware-in-the-loop (HIL) testing and system-level validation during commissioning.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="exp-card">
+        <div class="exp-logo">FSA</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3>UCT Formula Student (FSA Racing)</h3>
+              <div class="exp-role">Electrical Team Lead</div>
+            </div>
+            <span class="exp-date">2024 – 2025</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Directed the design, routing, and fabrication of the vehicle’s low-voltage electrical harness and power distribution architecture.</li>
+            <li>Managed a multi-disciplinary student engineering team, setting design timelines, testing milestones, and safety compliance.</li>
+            <li>Supervised telemetry acquisition, sensor integration, and real-time microcontroller debugging for track testing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="exp-card">
+        <div class="exp-logo">UCT</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3>Tugwell Hall Residence, UCT</h3>
+              <div class="exp-role">Admin & Reception Subwarden | Residence Mentor | Front Desk Assistant</div>
+            </div>
+            <span class="exp-date">2023 – 2025</span>
+          </div>
+          <ul class="exp-bullets">
+            <li><strong>Admin & Reception Subwarden (2024–2025):</strong> Managed front-of-house operations, crisis response protocols, and administrative logistics for a 400+ student residence.</li>
+            <li><strong>Residence Mentor (2024):</strong> Provided academic orientation, psychosocial support, and mentorship to first-year engineering students.</li>
+            <li><strong>Student Front Desk Assistant (2023–2024):</strong> Coordinated access control, facility maintenance logging, and student inquiries with discretion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="exp-card">
+        <div class="exp-logo">EEE</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3>UCT Department of Electrical Engineering</h3>
+              <div class="exp-role">Academic Tutor</div>
+            </div>
+            <span class="exp-date">2023 – 2024</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Facilitated weekly practical laboratory sessions and tutorial workshops for undergraduate engineering modules.</li>
+            <li>Guided students through circuit analysis, laboratory instrumentation (oscilloscopes, power supplies), and debugging C/MATLAB code.</li>
+            <li>Evaluated technical lab submissions and delivered structured feedback to improve technical problem-solving.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="exp-card">
+        <div class="exp-logo">LEAD</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3>University Governance & Leadership</h3>
+              <div class="exp-role">Treasurer (UCT Gymnastics Club & GBC)</div>
+            </div>
+            <span class="exp-date">2023 & 2026</span>
+          </div>
+          <ul class="exp-bullets">
+            <li><strong>UCT Gymnastics Club Treasurer (2026):</strong> Formulate operational budgets, track club expenditures, manage equipment procurement, and ensure transparent financial reporting.</li>
+            <li><strong>Green Campus Initiative (GBC) Treasurer (2023):</strong> Managed resource allocation for campus-wide sustainability campaigns, audited expenses, and coordinated disbursements.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head">
+      <p class="eyebrow">03 · Engineering Portfolio</p>
+      <h2>Technical Projects & Research</h2>
+      <p>Dynamic modeling, control architectures, and embedded firmware implementations.</p>
+    </div>
+
+    <div class="project-list">
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="proj-visual">
+          <div class="proj-img-box">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Flow Battery">
+          </div>
+          <div class="proj-btns">
+            <a href="reports/vrfb-proposal.pdf" target="_blank" class="btn-sm btn-sm-primary">📄 View Report (PDF)</a>
+            <a href="#" class="btn-sm btn-sm-secondary">💻 Model Schematics & Data</a>
+          </div>
+        </div>
+        <div class="proj-details">
+          <span class="eyebrow">Energy Storage & Power Electronics</span>
+          <h3>Vanadium Redox Flow Battery & Bidirectional DC-DC Interface</h3>
+          <div class="tech-pills">
+            <span class="tech-pill">MATLAB / Simulink</span>
+            <span class="tech-pill">Power Electronics</span>
+            <span class="tech-pill">State of Charge (SoC)</span>
+            <span class="tech-pill">Bidirectional Converters</span>
+          </div>
+          <div class="star-box">
+            <p class="star-row"><span class="star-tag">Situation:</span> Grid-scale renewable integration requires durable storage, but flow batteries exhibit complex non-linear voltage and SoC dynamics.</p>
+            <p class="star-row"><span class="star-tag">Task:</span> Model a multi-cell Vanadium Redox Flow Battery (VRFB) and control its integration via a bidirectional DC-DC converter topology.</p>
+            <p class="star-row"><span class="star-tag">Action:</span> Formulated electrochemical equations in MATLAB/Simulink; designed closed-loop voltage/current controllers to regulate dynamic charge/discharge profiles.</p>
+            <p class="star-row"><span class="star-tag">Result:</span> Characterized stack efficiency across flow rates and verified stable DC bus voltage regulation under step changes in load.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="proj-visual">
+          <div class="proj-img-box">
+            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Process Control">
+          </div>
+          <div class="proj-btns">
+            <a href="reports/dewatering-report.pdf" target="_blank" class="btn-sm btn-sm-primary">📄 View Report (PDF)</a>
+            <a href="#" class="btn-sm btn-sm-secondary">📊 Control Curves & Simulink</a>
+          </div>
+        </div>
+        <div class="proj-details">
+          <span class="eyebrow">Industrial Automation & Control</span>
+          <h3>Advanced Process Control & Pit Dewatering Optimization</h3>
+          <div class="tech-pills">
+            <span class="tech-pill">MATLAB / Simulink</span>
+            <span class="tech-pill">Variable Speed Drives (VSD)</span>
+            <span class="tech-pill">Hydraulics</span>
+            <span class="tech-pill">Feedback Control</span>
+          </div>
+          <div class="star-box">
+            <p class="star-row"><span class="star-tag">Situation:</span> Open-cast pit dewatering operations experience high pump wear and energy losses due to fixed-speed pumping under variable head pressures.</p>
+            <p class="star-row"><span class="star-tag">Task:</span> Design an Advanced Process Control (APC) strategy integrating Variable Speed Drives to dynamically regulate flow rates and minimize power consumption.</p>
+            <p class="star-row"><span class="star-tag">Action:</span> Modeled nonlinear pipe friction and pump head-capacity curves; implemented closed-loop feedback algorithms modulating VSD frequency based on sump inflow.</p>
+            <p class="star-row"><span class="star-tag">Result:</span> Achieved steady-state tracking error under 2% while reducing simulated peak energy consumption and mitigating hydraulic hammer shocks.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="proj-visual">
+          <div class="proj-img-box">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Embedded Subsystem">
+          </div>
+          <div class="proj-btns">
+            <a href="reports/thermistor-subsystem.pdf" target="_blank" class="btn-sm btn-sm-primary">📄 View Report (PDF)</a>
+            <a href="#" class="btn-sm btn-sm-secondary">🔗 Firmware Architecture</a>
+          </div>
+        </div>
+        <div class="proj-details">
+          <span class="eyebrow">Embedded Systems & Instrumentation</span>
+          <h3>Polar Sea-Ice Thermistor String & Telemetry Subsystem</h3>
+          <div class="tech-pills">
+            <span class="tech-pill">STM32 Microcontrollers</span>
+            <span class="tech-pill">C/C++ Embedded Firmware</span>
+            <span class="tech-pill">SPI / UART</span>
+            <span class="tech-pill">Heat Flux Calculations</span>
+          </div>
+          <div class="star-box">
+            <p class="star-row"><span class="star-tag">Situation:</span> In-situ Antarctic sea-ice research demands autonomous, ultra-low-power instrumentation capable of sampling multi-channel thermistor strings without data corruption.</p>
+            <p class="star-row"><span class="star-tag">Task:</span> Engineer data acquisition firmware, non-volatile storage routines, and communication integrity subsystem on an STM32 platform.</p>
+            <p class="star-row"><span class="star-tag">Action:</span> Programmed multi-channel ADC sampling with digital filtering; developed CRC error-checking for SPI flash logs and sleep-mode power management protocols.</p>
+            <p class="star-row"><span class="star-tag">Result:</span> Verified continuous temperature profiling across simulated sub-zero cycles with sub-millikelvin sensor accuracy and zero telemetry packet loss.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <div class="proj-visual">
+          <div class="proj-img-box">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="FPGA Logic">
+          </div>
+          <div class="proj-btns">
+            <a href="reports/cordic-design-spec.pdf" target="_blank" class="btn-sm btn-sm-primary">📄 View Design Spec (PDF)</a>
+            <a href="#" class="btn-sm btn-sm-secondary">💻 Verilog RTL Modules</a>
+          </div>
+        </div>
+        <div class="proj-details">
+          <span class="eyebrow">Digital Logic & Hardware Acceleration</span>
+          <h3>CORDIC Trigonometric Co-Processor in Verilog HDL</h3>
+          <div class="tech-pills">
+            <span class="tech-pill">Verilog HDL</span>
+            <span class="tech-pill">ModelSim / FPGA</span>
+            <span class="tech-pill">RISC Bus Architecture</span>
+            <span class="tech-pill">Fixed-Point Arithmetic</span>
+          </div>
+          <div class="star-box">
+            <p class="star-row"><span class="star-tag">Situation:</span> Embedded microcontrollers incur significant clock cycle overhead when computing trigonometric functions using software approximation libraries.</p>
+            <p class="star-row"><span class="star-tag">Task:</span> Design, verify, and interface a 16-bit pipelined CORDIC hardware accelerator for a RISC microprocessor core.</p>
+            <p class="star-row"><span class="star-tag">Action:</span> Built finite state machines for vectoring and rotation modes using shift-and-add arithmetic; authored ModelSim testbenches verifying convergence across all quadrants.</p>
+            <p class="star-row"><span class="star-tag">Result:</span> Achieved accurate angle and vector rotations within &lt;1% error, significantly reducing execution latency compared to software math routines.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>Nyakallo Peete</h2>
+        <p>BSc.Eng Mechatronics (Final Year) — Focused on control systems, embedded firmware, and intelligent hardware design.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:your-email@example.com">Email ↗</a></li>
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn ↗</a></li>
+            <li><a href="https://github.com" target="_blank">GitHub ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Nyakallo Peete. All rights reserved.</span>
+      <span>Professional Engineering ePortfolio</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
