@@ -37,7 +37,7 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block; object-fit:cover;}
+  img{max-width:100%; display:block;}
   ul{list-style:none;}
   h1,h2,h3,h4{font-family:var(--display); font-weight:600; letter-spacing:-0.01em; color:var(--ink);}
   .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
@@ -217,7 +217,7 @@
   /* ===== PROJECTS ===== */
   #projects{background:var(--bg-cool); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
   .project-card{
-    display:grid; grid-template-columns:0.9fr 1.1fr; gap:0;
+    display:grid; grid-template-columns:0.95fr 1.05fr; gap:0;
     background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg);
     overflow:hidden; margin-bottom:32px; box-shadow:0 4px 18px rgba(0,0,0,0.02);
     transition:border-color 0.2s ease, box-shadow 0.2s ease;
@@ -225,18 +225,27 @@
   .project-card:hover{border-color:#CBD5E1; box-shadow:0 12px 30px rgba(17,30,61,0.06);}
   .project-card:last-child{margin-bottom:0;}
   .project-visual{
-    background:linear-gradient(160deg,#111E3D,#1D2B4F); position:relative; min-height:280px;
-    display:flex; flex-direction:column; justify-content:space-between; padding:24px;
+    background:linear-gradient(160deg,#111E3D,#1D2B4F); position:relative; min-height:300px;
+    display:flex; flex-direction:column; justify-content:space-between; padding:22px;
     border-right:1px solid var(--border);
   }
+  
+  /* Centered, Longer Visual Containers */
   .project-visual-preview{
-    width:100%; height:150px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.15);
-    background:rgba(255,255,255,0.04); display:flex; align-items:center; justify-content:center;
+    width:100%; height:220px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.04); display:flex; align-items:center; justify-content:center; padding:10px;
   }
-  .project-visual-preview img{width:100%; height:100%; object-fit:cover;}
-  .placeholder-graphic{
-    color:#94A3B8; font-family:var(--mono); font-size:0.76rem; text-align:center; padding:16px; line-height:1.5;
+  .project-visual-preview.compact{
+    height:140px; /* Tailored aspect ratio for the Servo control block diagram */
   }
+  .project-visual-preview img{
+    max-width:100%; max-height:100%; object-fit:contain; object-position:center;
+    transition:transform 0.3s ease;
+  }
+  .project-visual:hover .project-visual-preview img{
+    transform:scale(1.02);
+  }
+  
   .project-artefacts{display:flex; flex-direction:column; gap:8px; margin-top:16px;}
   .artefact-btn{
     display:flex; align-items:center; justify-content:center; gap:8px; background:rgba(255,255,255,0.08);
@@ -320,7 +329,8 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-      <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary sm">Resume ⤓</a>
+      <!-- Viewable PDF in browser tab -->
+      <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary sm">Resume ↗</a>
     </div>
   </nav>
 </header>
@@ -331,7 +341,6 @@
   <section id="home">
     <div class="hero-grid">
       <div class="hero-portrait">
-        <!-- Hero: Home -->
         <img src="images/Home.jpg" alt="Nyakallo Peete" onerror="this.onerror=null; this.src='images/Home.png'; this.onerror=function(){this.src='reports/Home.jpg';};">
       </div>
       <div class="hero-copy">
@@ -355,7 +364,7 @@
         </div>
         <div class="hero-cta">
           <a href="#projects" class="btn primary">Explore Projects ↓</a>
-          <a href="resume.pdf" target="_blank" rel="noopener" class="btn ghost">View Resume ⤓</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn ghost">View Resume ↗</a>
         </div>
       </div>
     </div>
@@ -570,18 +579,19 @@
     <div class="section-head">
       <span class="eyebrow">Technical Projects & Research</span>
       <h2 style="margin-top:14px;">Selected engineering work.</h2>
-      <p>Structured around the STAR Method (Situation, Task, Action, Result) with direct links to technical reports, design specs, and code repositories.</p>
+      <p>Structured around the STAR Method (Situation, Task, Action, Result) with interactive views for reports, presentation slides, and code repositories.</p>
     </div>
 
     <!-- Project 1: VRFB (In Progress) -->
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Image: VRFB in reports/ -->
-          <img src="reports/VRFB.jpg" alt="VRFB Cover" onerror="this.onerror=null; this.src='reports/VRFB.png'; this.onerror=function(){this.src='images/VRFB.jpg'; this.onerror=function(){this.src='images/VRFB.png';};};">
+          <!-- Centered VRFB Image (reports/ or images/) -->
+          <img src="reports/VRFB.jpg" alt="VRFB Schematic" onerror="this.onerror=null; this.src='reports/VRFB.png'; this.onerror=function(){this.src='images/VRFB.jpg'; this.onerror=function(){this.src='images/VRFB.png';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/EEE4022S%202026%20Topic%20PB05%20Barendse.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Research Topic (PDF)</a>
+          <!-- In-browser viewable PDF -->
+          <a href="reports/EEE4022S%202026%20Topic%20PB05%20Barendse.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Research Topic (PDF) ↗</a>
         </div>
       </div>
       <div class="project-info">
@@ -622,11 +632,12 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Image: dewatering in reports/ -->
-          <img src="reports/dewatering.jpg" alt="Pit Dewatering Cover" onerror="this.onerror=null; this.src='reports/dewatering.png'; this.onerror=function(){this.src='images/dewatering.jpg'; this.onerror=function(){this.src='images/dewatering.png';};};">
+          <!-- Centered Dewatering Pump Image (reports/ or images/) -->
+          <img src="reports/dewatering.jpg" alt="Exxaro Dewatering Pump" onerror="this.onerror=null; this.src='reports/dewatering.png'; this.onerror=function(){this.src='images/dewatering.jpg'; this.onerror=function(){this.src='images/dewatering.png';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/GG%20Vacation%20Work%20-%20Nyakallo%20Peete.pptx" target="_blank" rel="noopener" class="artefact-btn">📊 Download Presentation (.pptx)</a>
+          <!-- In-browser viewable PowerPoint via Web Office Viewer -->
+          <a href="reports/GG%20Vacation%20Work%20-%20Nyakallo%20Peete.pptx" target="_blank" rel="noopener" class="artefact-btn" onclick="if(window.location.protocol.startsWith('http')){this.href='https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(window.location.origin + '/reports/GG%20Vacation%20Work%20-%20Nyakallo%20Peete.pptx');}">📊 View Presentation Slides ↗</a>
         </div>
       </div>
       <div class="project-info">
@@ -665,11 +676,12 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Image: Power Board in reports/ -->
-          <img src="reports/Power%20Board.jpg" alt="Power Board Cover" onerror="this.onerror=null; this.src='reports/Power%20Board.png'; this.onerror=function(){this.src='reports/Power Board.jpg'; this.onerror=function(){this.src='images/Power Board.jpg';};};">
+          <!-- Centered 3D Power Board PCB (reports/ or images/) -->
+          <img src="reports/Power%20Board.jpg" alt="3D Power Board PCB" onerror="this.onerror=null; this.src='reports/Power%20Board.png'; this.onerror=function(){this.src='reports/Power Board.jpg'; this.onerror=function(){this.src='images/Power Board.jpg';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/EEE3088F%202025%20Project%20Report%20PTXNYA001.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Design Report (PDF)</a>
+          <!-- In-browser viewable PDF -->
+          <a href="reports/EEE3088F%202025%20Project%20Report%20PTXNYA001.pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Design Report (PDF) ↗</a>
           <a href="https://github.com/nyalcina" target="_blank" rel="noopener" class="artefact-btn">💻 Hardware Repository ↗</a>
         </div>
       </div>
@@ -709,11 +721,12 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Image: hoorah in reports/ -->
-          <img src="reports/hoorah.jpg" alt="Sea Ice Buoy Cover" onerror="this.onerror=null; this.src='reports/hoorah.png'; this.onerror=function(){this.src='images/hoorah.jpg'; this.onerror=function(){this.src='images/hoorah.png';};};">
+          <!-- Centered Firmware Flowchart (reports/ or images/) -->
+          <img src="reports/hoorah.jpg" alt="Firmware Flowchart" onerror="this.onerror=null; this.src='reports/hoorah.png'; this.onerror=function(){this.src='images/hoorah.jpg'; this.onerror=function(){this.src='images/hoorah.png';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/EEE4113F_Group_16_NTSBOI008_KRKDAV003_NYNDEB001_PTXNYA001%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Technical Report (PDF)</a>
+          <!-- In-browser viewable PDF -->
+          <a href="reports/EEE4113F_Group_16_NTSBOI008_KRKDAV003_NYNDEB001_PTXNYA001%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Technical Report (PDF) ↗</a>
           <a href="https://github.com/nyalcina/EEE4113F--Antarctic-Sea-Ice-Flux-Profiler" target="_blank" rel="noopener" class="artefact-btn">💻 GitHub Repository ↗</a>
         </div>
       </div>
@@ -754,11 +767,12 @@
     <div class="project-card">
       <div class="project-visual">
         <div class="project-visual-preview">
-          <!-- Image: verilog in reports/ -->
-          <img src="reports/verilog.jpg" alt="CORDIC Cover" onerror="this.onerror=null; this.src='reports/verilog.png'; this.onerror=function(){this.src='images/verilog.jpg'; this.onerror=function(){this.src='images/verilog.png';};};">
+          <!-- Centered CORDIC CRU Architecture (reports/ or images/) -->
+          <img src="reports/verilog.jpg" alt="CORDIC Architecture" onerror="this.onerror=null; this.src='reports/verilog.png'; this.onerror=function(){this.src='images/verilog.jpg'; this.onerror=function(){this.src='images/verilog.png';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/EEE4120F_Project_Group_2%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Co-Processor Paper (PDF)</a>
+          <!-- In-browser viewable PDF -->
+          <a href="reports/EEE4120F_Project_Group_2%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Co-Processor Paper (PDF) ↗</a>
           <a href="https://github.com/nyalcina" target="_blank" rel="noopener" class="artefact-btn">💻 Verilog RTL Repository ↗</a>
         </div>
       </div>
@@ -794,15 +808,16 @@
       </div>
     </div>
 
-    <!-- Project 6: Robust Cascade Control -->
+    <!-- Project 6: Robust Cascade Control (Compact block) -->
     <div class="project-card">
       <div class="project-visual">
-        <div class="project-visual-preview">
-          <!-- Image: servo in reports/ -->
-          <img src="reports/servo.jpg" alt="Servo Control Cover" onerror="this.onerror=null; this.src='reports/servo.png'; this.onerror=function(){this.src='images/servo.jpg'; this.onerror=function(){this.src='images/servo.png';};};">
+        <div class="project-visual-preview compact">
+          <!-- Centered Simulink Cascade Block Diagram (reports/ or images/) -->
+          <img src="reports/servo.jpg" alt="Simulink Cascade Control Diagram" onerror="this.onerror=null; this.src='reports/servo.png'; this.onerror=function(){this.src='images/servo.jpg'; this.onerror=function(){this.src='images/servo.png';};};">
         </div>
         <div class="project-artefacts">
-          <a href="reports/EEE4118F_2026_PTXNYA001_Controller_Implementation_and_GA_Report%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Control Systems Report (PDF)</a>
+          <!-- In-browser viewable PDF -->
+          <a href="reports/EEE4118F_2026_PTXNYA001_Controller_Implementation_and_GA_Report%20(1).pdf" target="_blank" rel="noopener" class="artefact-btn">📄 View Control Systems Report (PDF) ↗</a>
         </div>
       </div>
       <div class="project-info">
@@ -846,7 +861,7 @@
         <span class="eyebrow" style="color:#8592AC;">Contact</span>
         <h2>Let's build something together.</h2>
         <p>Open to graduate engineering opportunities and collaborations in control systems, embedded hardware, and intelligent systems design.</p>
-        <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary">Download Resume ⤓</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="btn primary">View Resume ↗</a>
       </div>
       <div style="display:flex; gap:56px; flex-wrap:wrap;">
         <div class="contact-links">
